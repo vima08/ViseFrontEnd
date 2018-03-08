@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function() {
+            // alert('test');
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/test_war_exploded/resource/helloworld?q=13&test=7&sdhg=dsfds",
+                success: function(data) {
+                    a = $('#p')
+                    a.append('<p>' + data + '</p>');
+                }
+            });
+
+        });
+    </script>
+
+    <div id="p">
+        <p > test</p>
+    </div>
+
+
+</body>
+</html>
