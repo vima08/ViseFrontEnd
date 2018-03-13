@@ -13,8 +13,18 @@
 </head>
 
 <body>
+<input type="button" id="testbutton" value="Test">
 
 <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="testdiv"></div>
+<div id="information"></div>
+
+<script
+        src="https://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+        crossorigin="anonymous"></script>
+
+
 <script>
     var trace1 = {
         x: [1, 2, 3, 4],
@@ -29,6 +39,30 @@
     var data = [trace1, trace2];
     Plotly.newPlot('myDiv', data);
 </script>
+
+<script>
+
+    $('#testbutton').click(function() {
+//        alert("sdfsd");
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld",
+            success: function (data) {
+//                alert(data[0]);
+                var trace1 = {
+                    x: data[0],
+                    y: data[1],
+                    type: 'scatter'
+                };
+                var data = [trace1];
+                Plotly.newPlot('myDiv', data);
+            },
+            dataType: "json"
+        });
+    });
+
+</script>
+
 </body>
 
 </html>
