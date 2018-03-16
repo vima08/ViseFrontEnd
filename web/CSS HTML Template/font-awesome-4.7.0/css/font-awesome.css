@@ -59,6 +59,11 @@
 .fa-li.fa-lg {
   left: -1.85714286em;
 }
+
+.fa-top {
+  margin-top: 500px;
+}
+
 .fa-border {
   padding: .2em .25em .15em;
   border: solid 0.08em #eeeeee;
@@ -159,7 +164,7 @@
   display: inline-block;
   width: 2em;
   height: 2em;
-  line-height: 2em;
+  line-height: 5em;
   vertical-align: middle;
 }
 .fa-stack-1x,

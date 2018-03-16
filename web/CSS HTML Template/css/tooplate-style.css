@@ -62,8 +62,8 @@ p {
 
 .navbar { 
 	width: 100%; 
-	padding-top: 0;
-	padding-bottom: 0;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 .navbar-brand {
 	font-size: 1.8rem;
@@ -114,13 +114,13 @@ p {
 }
 
 .tm-top-bar.active {
-	height: 79px;
+	height: 90px;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link { padding: 30px 35px; }
 .tm-top-bar-bg { height: 119px; }
-.tm-section { min-height: 515px; }
+.tm-section { min-height: 650px; }
 
 .tm-section-pad {
 	padding-top: 80px;
@@ -525,7 +525,7 @@ video {
 
 @media screen and (max-width: 767px) and (min-width: 524px) {
 	.tm-search-form .tm-form-element-100 { 
-		width: 100%; 
+		width: 100%;
 		max-width: none;
 	}
 
