@@ -203,6 +203,13 @@ p {
 	left: 15px;
 }
 
+.tm-form-element-icon-my {
+	color: #ee5057;
+	position: absolute;
+	bottom: 10px; /* Положение от нижнего края */
+	left: 15px;
+}
+
 .tm-form-element-icon-small {
 	top: 16px;
 	left: 18px;
