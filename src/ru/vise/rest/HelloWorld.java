@@ -25,7 +25,7 @@ public class HelloWorld {
                                     @QueryParam("iteration") Integer iteration,
                                     @QueryParam("peopleCount") Integer peopleCount,
                                     @QueryParam("majorityThreshold") Double majorityThreshold,
-                                    @QueryParam("var") Integer var,
+                                    @QueryParam("var") String var,
                                     @QueryParam("distrib") String distrib,
                                     @QueryParam("start") Integer start,
                                     @QueryParam("finish") Integer finish,
@@ -34,7 +34,7 @@ public class HelloWorld {
         // Return some cliched textual content
         return new Gson().toJson(BackEnd.runSimpleEgo(capital, "ParetoDistribution", mu, sigma,
                 k, iteration, stepNumber, peopleCount,
-                majorityThreshold, start, finish, step));
+                majorityThreshold, start, finish, step, var));
 //        return new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
 //                20, 100, 10, 101,
 //                0.5, -250, 100, 10));
