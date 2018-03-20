@@ -34,7 +34,7 @@ public class HelloWorld {
         // Return some cliched textual content
         return new Gson().toJson(BackEnd.runSimpleEgo(capital, "ParetoDistribution", mu, sigma,
                 k, iteration, stepNumber, peopleCount,
-                0.5, start, finish, step));
+                majorityThreshold, start, finish, step));
 //        return new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
 //                20, 100, 10, 101,
 //                0.5, -250, 100, 10));
