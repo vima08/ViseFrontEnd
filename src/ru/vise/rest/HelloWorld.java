@@ -40,6 +40,10 @@ public class HelloWorld {
 //                0.5, -250, 100, 10));
 //        return "Hi";//TestGetter.get().toString() + test.toString() + " " + q;
     }
-
+    @GET
+    @Path("/percentage")
+    public String getPercentage() {
+        return Double.toString(BackEnd.getPercentage());
+    }
 
 }

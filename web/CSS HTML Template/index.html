@@ -490,6 +490,27 @@
                 <!--</div>-->
             <!--</div>-->
 
+            <style>
+                #myProgress {
+                    width: 100%;
+                    background-color: #ddd;
+                }
+
+                #myBar {
+                    width: 1%;
+                    height: 30px;
+                    background-color: #4CAF50;
+                }
+            </style>
+
+
+            <div id="myProgress">
+                <div id="myBar"></div>
+                <!--<button onclick="move()">Click Me</button>-->
+            </div>
+
+
+
             <div id="myDiv"></div>
 
             <footer class="tm-bg-dark-blue">
@@ -546,6 +567,7 @@
 
         <script>
             function call() {
+                callPercentage();
                 var msg   = $('#formx').serialize();
                 $.ajax({
                     type: 'GET',
@@ -579,6 +601,49 @@
                     dataType: "json"
                 });
 
+            }
+        </script>
+
+        <script>
+            function callPercentage() {
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    //width++;
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/percentage',
+                        success: function(data) {
+                            elem.style.width = data * 100 + '%';
+//                            alert(data);
+                            //$('#results').html(data);
+                        },
+                        error:  function(xhr, str){
+                            alert('Возникла ошибка: ' + xhr.responseCode);
+                        },
+                        dataType: "json"
+                    });
+                    if (width >= 100) clearInterval(id);
+                }
+
+
+            }
+        </script>
+
+        <script>
+            function move() {
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                    }
+                }
             }
         </script>
 
