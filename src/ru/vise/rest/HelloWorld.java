@@ -32,7 +32,7 @@ public class HelloWorld {
                                     @QueryParam("step")Integer step,
                                     @QueryParam("multiple") Double multiple) {
         // Return some cliched textual content
-        return new Gson().toJson(BackEnd.runSimpleEgo(capital, "ParetoDistribution", mu, sigma,
+        return new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
                 k, iteration, stepNumber, peopleCount,
                 majorityThreshold, start, finish, step, var));
 //        return new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
