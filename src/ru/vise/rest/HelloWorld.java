@@ -7,8 +7,7 @@ import altr.BackEnd;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.hibernate.Session;
-import ru.vise.InputObj;
-import ru.vise.dao.FactoryDAO;
+
 import ru.vise.entities.AttributeEntity;
 import ru.vise.entities.ObjectEntity;
 import ru.vise.entities.ParamEntity;
