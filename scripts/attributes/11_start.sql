@@ -1,0 +1,1 @@
+INSERT INTO attribute (attr_id, attr_name, attr_type, description) VALUES (11, 'start', 1, 'int');
