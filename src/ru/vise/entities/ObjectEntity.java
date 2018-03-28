@@ -1,12 +1,13 @@
 package ru.vise.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "object", schema = "vise")
-public class ObjectEntity {
+public class ObjectEntity implements Serializable{
     private int objectId;
     private String name;
     private String description;
@@ -14,6 +15,7 @@ public class ObjectEntity {
 
     @Id
     @Column(name = "object_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getObjectId() {
         return objectId;
     }

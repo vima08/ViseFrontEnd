@@ -1,10 +1,11 @@
 package ru.vise.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "param", schema = "vise")
-public class ParamEntity {
+public class ParamEntity implements Serializable{
     private int paramId;
     private String value;
     private ObjectEntity objectsByObjectId;
@@ -12,6 +13,7 @@ public class ParamEntity {
 
     @Id
     @Column(name = "param_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public int getParamId() {
         return paramId;
     }
@@ -68,5 +70,15 @@ public class ParamEntity {
 
     public void setAttributesByAttrId(AttributeEntity attributesByAttrId) {
         this.attributesByAttrId = attributesByAttrId;
+    }
+
+    @Override
+    public String toString() {
+        return "ParamEntity{" +
+                "paramId=" + paramId +
+                ", value='" + value + '\'' +
+                ", objectsByObjectId=" + objectsByObjectId +
+                ", attributesByAttrId=" + attributesByAttrId +
+                '}';
     }
 }

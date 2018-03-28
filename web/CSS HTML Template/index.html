@@ -29,7 +29,7 @@
                 <!-- Top Navbar -->
                 <div class="container">
                     <div class="row">
-                        
+
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand mr-auto" href="#">
                                 <img src="img/logo.png" width="120" height="80" alt="Site logo">
@@ -53,8 +53,8 @@
                                     <a class="nav-link" href="#tm-section-6">Contact Us</a>
                                   </li>
                                 </ul>
-                            </div>                            
-                        </nav>            
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                                             <i class="fa fa-one-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-one-marker mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>-->
                                             <input name="capital" id="capital" type="text" class="form-control" id="initCapital"
-                                                   placeholder="Initial capital..." value="10">
+                                                   placeholder="Initial capital..." value="10" attr_id="1">
                                         </div>
                                         <!--<div class="form-row tm-search-form-row">-->
                                             <!--<div class="form-group tm-form-element tm-form-element-2">-->
@@ -92,7 +92,7 @@
                                             <i class="fa fa-two-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-two-marker mt-1 tm-font-semibold tm-color-primary"> Mu</i>-->
                                             <input name="mu" type="text" class="form-control" id="mu"
-                                                   placeholder="Mu..." value="0.1">
+                                                   placeholder="Mu..." value="0.1" attr_id="2">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="sigmaId">Sigma:</label>-->
@@ -100,7 +100,7 @@
                                             <i class="fa fa-three-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-three-marker mt-1 tm-font-semibold tm-color-primary"> Sigma</i>-->
                                             <input name="sigma" type="text" class="form-control" id="sigmaId"
-                                                   placeholder="Sigma..." value="1">
+                                                   placeholder="Sigma..." value="1" attr_id="3">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="kId">K:</label>-->
@@ -108,7 +108,7 @@
                                             <i class="fa fa-four-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-four-marker mt-1 tm-font-semibold tm-color-primary"> K</i>-->
                                             <input name="k" type="text" class="form-control" id="kId"
-                                                   placeholder="K..."  value="20">
+                                                   placeholder="K..."  value="20" attr_id="4">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="stepNumberId">Step Number:</label>-->
@@ -116,7 +116,7 @@
                                             <i class="fa fa-five-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-five-marker mt-1 tm-font-semibold tm-color-primary"> Step Number</i>-->
                                             <input name="stepNumber" type="text" class="form-control" id="stepNumberId"
-                                                   placeholder="Step Number..."  value="10">
+                                                   placeholder="Step Number..."  value="10" attr_id="5">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="iterationId">Iteration:</label>-->
@@ -124,7 +124,7 @@
                                             <i class="fa fa-six-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-six-marker mt-1 tm-font-semibold tm-color-primary"> Iteration</i>-->
                                             <input name="iteration" type="text" class="form-control" id="iterationId"
-                                                   placeholder="Iteration..." value="100">
+                                                   placeholder="Iteration..." value="100" attr_id="6">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="peopleCountId">People Count:</label>-->
@@ -132,14 +132,14 @@
                                             <i class="fa fa-seven-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-seven-marker mt-1 tm-font-semibold tm-color-primary"></i>-->
                                             <input name="peopleCount" type="text" class="form-control" id="peopleCountId"
-                                                   placeholder="People Count..." value="101">
+                                                   placeholder="People Count..." value="101" attr_id="7">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
                                             <!--<label for="majorityThresholdId">Majority Threshold:</label>-->
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold (alpha)</i>
+                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold</i>
                                             <i class="fa fa-eight-marker fa-2x tm-form-element-icon-my"></i>
                                             <input name="majorityThreshold" type="text" class="form-control" id="majorityThresholdId"
-                                                   placeholder="Majority threshold..." value="0.5">
+                                                   placeholder="Majority threshold..." value="0.5" attr_id="8">
                                         </div>
                                         <!--<label for="inputCheckIn">Distribution</label>-->
                                         <!--<div class="form-group tm-form-element tm-form-element-50">-->
@@ -154,7 +154,7 @@
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-2">
                                             <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Variation</i>-->
-                                            <select name="var" class="form-control tm-select" id="var">
+                                            <select name="var" class="form-control tm-select" id="var" attr_id="9">
                                                 <!--<option value="">Var</option>-->
                                                 <option value="mu">mu</option>
                                                 <option value="sigma">sigma</option>
@@ -168,10 +168,11 @@
                                             <i class="fa fa-var-marker fa-2x tm-form-element-icon"></i>
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <select name="distrib" class="form-control tm-select" id="distrib">
+                                            <select name="distrib" class="form-control tm-select" id="distrib" attr_id="10">
                                                 <!--<option value="">Distribution</option>-->
-                                                <option value="ParetoDistribution">Pareto</option>
-                                                <option value="NormalDistribution">Normal</option>
+                                                <option value="ParetoDistribution">ParetoDistribution</option>
+                                                <option value="NormalDistribution">NormalDistribution</option>
+                                                <option value="ContinuousUniformDistribution">ContinuousUniformDistribution</option>
                                                 <!--<option value="ParetoDistribution">ContinForm</option>-->
                                             </select>
                                             <i class="fa fa-distrib-marker fa-2x tm-form-element-icon"></i>
@@ -182,7 +183,7 @@
                                                 <i class="fa mt-1 tm-font-semibold tm-color-primary">Start</i>
                                                 <i class="fa fa-start-marker fa-2x tm-form-element-icon-my"></i>
                                                 <input name="start" id="start" type="text" class="form-control" id="start"
-                                                       placeholder="Start" value="-250">
+                                                       placeholder="Start" value="-250" attr_id="11">
                                                 <!--<span for="start" class="fa fa-start-marker fa-2x tm-form-element-icon"></span>-->
                                             </div>
                                             <div class="form-group tm-form-element tm-form-element-100">
@@ -190,28 +191,28 @@
                                                 <i class="fa mt-1 tm-font-semibold tm-color-primary">Finish</i>
                                                 <i class="fa fa-finish-marker fa-2x tm-form-element-icon-my"></i>
                                                 <input name="finish" id="finish" type="text" class="form-control" id="finish"
-                                                       placeholder="Finish" value="100">
+                                                       placeholder="Finish" value="100" attr_id="12">
                                                 <!--<label for="finish">Finish</label>-->
                                             </div>
                                             <div class="form-group tm-form-element tm-form-element-100">
                                                 <!--<label for="initCapital">Initial capital:</label>-->
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Finish</i>
+                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Step</i>
                                                 <i class="fa fa-step-marker fa-2x tm-form-element-icon-my"></i>
                                                 <input name="step" id="step" type="text" class="form-control" id="step"
-                                                       placeholder="Step"  value="10">
+                                                       placeholder="Step"  value="10" attr_id="13">
                                             </div>
                                         </div>
-                                        <div class="form-row tm-search-form-row">
-                                            <div class="form-group tm-form-element tm-form-element-100">
-                                                <!--<label for="initCapital">Initial capital:</label>-->
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>
-                                                <i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>
-                                                <!--<i class="fa fa-multiple-marker fa-2x tm-form-element-icon"></i>-->
-                                                <input name="multiple" id="multiple" type="text" class="form-control" id="multiple"
-                                                       placeholder="Multiple">
-                                                <!--<label for="multiple">Multiple</label>-->
-                                            </div>
-                                        </div>
+                                        <!--<div class="form-row tm-search-form-row">-->
+                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                                <!--&lt;!&ndash;<label for="initCapital">Initial capital:</label>&ndash;&gt;-->
+                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>-->
+                                                <!--<i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>-->
+                                                <!--&lt;!&ndash;<i class="fa fa-multiple-marker fa-2x tm-form-element-icon"></i>&ndash;&gt;-->
+                                                <!--<input name="multiple" id="multiple" type="text" class="form-control" id="multiple"-->
+                                                       <!--placeholder="Multiple">-->
+                                                <!--&lt;!&ndash;<label for="multiple">Multiple</label>&ndash;&gt;-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
 
                                     <div class="container">
@@ -220,7 +221,7 @@
                                             <div class="form-group tm-form-element tm-form-element-2">
                                                 <!-- progress button -->
                                                 <div class="progress-button">
-                                                    <button><span>Submit</span></button>
+                                                    <button id="submitbutton"><span>Submit</span></button>
                                                     <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
                                                     <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
                                                     <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
@@ -265,16 +266,11 @@
                                 <!--</form>-->
 
 
-                            </div>                        
-                        </div>      
+                            </div>
+                        </div>
                     </div>
-                </div>                  
+                </div>
             </div>
-
-
-
-
-
 
             <!--<div class="tm-section-2">-->
                 <!--<div class="container">-->
@@ -518,10 +514,10 @@
                     <div class="row">
                         <p class="col-sm-12 text-center tm-font-light tm-color-white p-4 tm-margin-b-0">
                         Copyright &copy; <span class="tm-current-year">2018</span> Your Company
-                        
-                        - Designed by <a href="http://www.tooplate.com" class="tm-color-primary tm-font-normal" target="_parent">Tooplate</a></p>        
+
+                        - Designed by <a href="http://www.tooplate.com" class="tm-color-primary tm-font-normal" target="_parent">Tooplate</a></p>
                     </div>
-                </div>                
+                </div>
             </footer>
         </div>
 
@@ -531,7 +527,7 @@
 
         <!-- load JS files -->
         <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
-        <script src="js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
+        <script src="js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->
         <script src="js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
         <script src="js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
         <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
@@ -539,6 +535,8 @@
         <script src="js/plotly-latest.min.js"></script>
         <script src="js/button.js"></script>
 
+        <script src="js/jquery-3.3.1.js"></script>
+        <script src="js/jquery.serializeObject.js"></script>
         <!--script
                 src="https://code.jquery.com/jquery-1.12.3.min.js"
                 integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
@@ -564,14 +562,55 @@
                 <!--});-->
             <!--});-->
         <!--</script>-->
+         <script>
+//             function call() {
+//                 callPercentage();
+//                 var msg   = $('#formx').serialize();
+//                 $.ajax({
+//                     type: 'GET',
+//                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
+//                     data: msg,
+//                     success: function(data) {
+////                        alert(data);
+//                         var trace1 = {
+//                             x: data[0],
+//                             y: data[1],
+//                             mode: 'lines+markers',
+//                             name: 'Result',
+//                             line: {shape: 'spline'},
+//                             type: 'scatter'
+//                         };
+//                         var trace2 = {
+//                             x: data[0],
+//                             y: data[2],
+//                             mode: 'lines+markers',
+//                             name: 'People Count',
+//                             line: {shape: 'spline'},
+//                             type: 'scatter'
+//                         };
+//                         var plotdata = [trace1, trace2];
+//                         Plotly.newPlot('myDiv', plotdata);
+//                         //$('#results').html(data);
+//                     },
+//                     error:  function(xhr, str){
+//                         alert('Возникла ошибка: ' + xhr.responseCode);
+//                     },
+//                     dataType: "json"
+//                 });
+//             }
+            $('#submitbutton').click(function() {
 
-        <script>
-            function call() {
+//                var a = $('#formx').serializeObject();
+                var a = serialize();
+                console.log(a);
+                $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/save',
+                    {data: JSON.stringify(a)});
+
                 callPercentage();
                 var msg   = $('#formx').serialize();
                 $.ajax({
                     type: 'GET',
-                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
                     data: msg,
                     success: function(data) {
 //                        alert(data);
@@ -600,8 +639,8 @@
                     },
                     dataType: "json"
                 });
-
-            }
+//                return false;
+            });
         </script>
 
         <script>
@@ -626,8 +665,6 @@
                     });
                     if (width >= 100) clearInterval(id);
                 }
-
-
             }
         </script>
 
@@ -647,7 +684,15 @@
             }
         </script>
 
-
-</body>
+        <script>
+            function serialize() {
+                var data = {};
+                $("[attr_id]").each(function () {
+                    data[$(this).attr("attr_id")] = $(this).val()
+                });
+                return data;
+            }
+        </script>
+    </body>
 </html>
 
