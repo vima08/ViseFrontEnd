@@ -188,7 +188,6 @@
 
             <div id="myProgress">
                 <div id="myBar"></div>
-                <!--<button onclick="move()">Click Me</button>-->
             </div>
 
 
@@ -285,14 +284,19 @@
         <script>
             function callPercentage() {
                 var elem = document.getElementById("myBar");
-                var id = setInterval(frame, 10);
+                var id = setInterval(frame, 100);
+                var reset = 0;
                 function frame() {
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/percentage',
                         success: function(data) {
                             elem.style.width = data * 100 + '%';
-                            if (data >= 1) clearInterval(id);
+                            if (data >= 1) reset++;
+                            if (reset >= 5) {
+                                clearInterval(id);
+                                reset = 0;
+                            }
                             //$('#results').html(data);
                         },
                         error:  function(xhr, str){
@@ -303,22 +307,6 @@
                 }
 
 
-            }
-        </script>
-
-        <script>
-            function move() {
-                var elem = document.getElementById("myBar");
-                var width = 1;
-                var id = setInterval(frame, 10);
-                function frame() {
-                    if (width >= 100) {
-                        clearInterval(id);
-                    } else {
-                        width++;
-                        elem.style.width = width + '%';
-                    }
-                }
             }
         </script>
 
