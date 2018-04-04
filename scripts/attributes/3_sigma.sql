@@ -1,0 +1,1 @@
+INSERT INTO attribute (attr_id, attr_name, attr_type, description) VALUES (3, 'sigma', 2, 'Double');
