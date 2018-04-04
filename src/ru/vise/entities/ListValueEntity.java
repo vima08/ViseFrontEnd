@@ -10,14 +10,15 @@ public class ListValueEntity {
     private String value;
     private AttributeEntity attributesByAttrId;
 
-    @Id
-    @Column(name = "list_value_id", nullable = false)
-    public int getListValueId() {
-        return listValueId;
-    }
-
     public void setListValueId(int listValueId) {
         this.listValueId = listValueId;
+    }
+
+    @Id
+    @Column(name = "list_value_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getListValueId() {
+        return listValueId;
     }
 
     @Basic
