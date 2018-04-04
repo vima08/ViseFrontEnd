@@ -24,6 +24,8 @@
 
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+        <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     </head>
 
     <body>
@@ -47,15 +49,12 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
                                   </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-4">History</a>
-                                  </li>
-                                  <!--li class="nav-item">
-                                   <a class="nav-link" href="#tm-section-5">Blog Entries</a>
-                                  </li-->
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-6">Contact Us</a>
-                                  </li>
+                                  <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" href="#tm-section-4">History</a>-->
+                                  <!--</li>-->
+                                  <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" href="#tm-section-6">Contact Us</a>-->
+                                  <!--</li>-->
                                 </ul>
                             </div>
                         </nav>
@@ -65,145 +64,106 @@
             <div class="tm-section tm-bg-img" id="tm-section-1">
                 <div class="tm-bg-white ie-container-width-fix-2">
                     <div class="container ie-h-align-center-fix">
-                        <div c  lass="row">
+                        <div class="row">
                             <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
                                 <form action="javascript:void(null);" method="get" id="formx" class="tm-search-form tm-section-pad-2" onsubmit="call()">
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="initCapital">Initial capital:</label>-->
-                                            <!--<label for="initCapital">Initial capital:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>
                                             <i class="fa fa-one-marker fa-2x tm-form-element-icon-my"></i>
                                             <!--<i class="fa fa-one-marker mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>-->
-                                            <input name="capital" id="capital" type="text" class="form-control" id="initCapital"
-                                                   placeholder="Initial capital..." value="10" attr_id="1">
+                                            <input name="capital" type="text" class="form-control" id="initCapital"
+                                                   placeholder="Initial capital..." value="10">
                                         </div>
-                                        <!--<div class="form-row tm-search-form-row">-->
-                                            <!--<div class="form-group tm-form-element tm-form-element-2">-->
-                                                <!--<label for="distibut">Distribution:</label>-->
-                                                <!--<select name="distribution" class="form-control tm-select" id="distibut">-->
-                                                    <!--<option value="">Distribution</option>-->
-                                                    <!--<option value="1">1</option>-->
-                                                    <!--<option value="2">2</option>-->
-                                                    <!--<option value="3">3</option>-->
-                                                <!--</select>-->
-                                            <!--</div>-->
-                                                <!--<i class="fa fa-2x fa-user tm-form-element-icon"></i>-->
-                                        <!--</div>-->
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="mu">Mu:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> Mu</i>
                                             <i class="fa fa-two-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-two-marker mt-1 tm-font-semibold tm-color-primary"> Mu</i>-->
                                             <input name="mu" type="text" class="form-control" id="mu"
                                                    placeholder="Mu..." value="0.1" attr_id="2">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="sigmaId">Sigma:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> Sigma</i>
                                             <i class="fa fa-three-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-three-marker mt-1 tm-font-semibold tm-color-primary"> Sigma</i>-->
                                             <input name="sigma" type="text" class="form-control" id="sigmaId"
                                                    placeholder="Sigma..." value="1" attr_id="3">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="kId">K:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> K</i>
                                             <i class="fa fa-four-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-four-marker mt-1 tm-font-semibold tm-color-primary"> K</i>-->
                                             <input name="k" type="text" class="form-control" id="kId"
                                                    placeholder="K..."  value="20" attr_id="4">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="stepNumberId">Step Number:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> Step Number</i>
                                             <i class="fa fa-five-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-five-marker mt-1 tm-font-semibold tm-color-primary"> Step Number</i>-->
                                             <input name="stepNumber" type="text" class="form-control" id="stepNumberId"
                                                    placeholder="Step Number..."  value="10" attr_id="5">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="iterationId">Iteration:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> Iteration</i>
                                             <i class="fa fa-six-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-six-marker mt-1 tm-font-semibold tm-color-primary"> Iteration</i>-->
                                             <input name="iteration" type="text" class="form-control" id="iterationId"
                                                    placeholder="Iteration..." value="100" attr_id="6">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="peopleCountId">People Count:</label>-->
                                             <i class="fa mt-1 tm-font-semibold tm-color-primary"> People Count</i>
                                             <i class="fa fa-seven-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-seven-marker mt-1 tm-font-semibold tm-color-primary"></i>-->
                                             <input name="peopleCount" type="text" class="form-control" id="peopleCountId"
                                                    placeholder="People Count..." value="101" attr_id="7">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-100">
-                                            <!--<label for="majorityThresholdId">Majority Threshold:</label>-->
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold</i>
+                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold (alpha)</i>
                                             <i class="fa fa-eight-marker fa-2x tm-form-element-icon-my"></i>
                                             <input name="majorityThreshold" type="text" class="form-control" id="majorityThresholdId"
                                                    placeholder="Majority threshold..." value="0.5" attr_id="8">
                                         </div>
-                                        <!--<label for="inputCheckIn">Distribution</label>-->
-                                        <!--<div class="form-group tm-form-element tm-form-element-50">-->
-                                            <!--<i class="fa fa-calendar fa-2x tm-form-element-icon"></i>-->
-                                            <!--<input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group tm-form-element tm-form-element-50">-->
-                                            <!--<i class="fa fa-calendar fa-2x tm-form-element-icon"></i>-->
-                                            <!--<input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">-->
-                                        <!--</div>-->
                                     </div>
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Variation</i>-->
-                                            <select name="var" class="form-control tm-select" id="var" attr_id="9">
+                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Variation</i>
+                                            <select name="var" class="form-control" id="var" attr_id="9">
                                                 <!--<option value="">Var</option>-->
                                                 <option value="mu">mu</option>
                                                 <option value="sigma">sigma</option>
-                                                <!--<option value="3">3</option>-->
-                                                <!--<option value="4">4</option>-->
-                                                <!--<option value="5">5</option>-->
-                                                <!--<option value="6">6</option>-->
-                                                <!--<option value="7">7</option>-->
-                                                <!--<option value="8">8</option>-->
                                             </select>
-                                            <i class="fa fa-var-marker fa-2x tm-form-element-icon"></i>
+                                            <!--<i class="fa fa-var-marker fa-2x tm-form-element-icon"></i>-->
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <select name="distrib" class="form-control tm-select" id="distrib" attr_id="10">
-                                                <!--<option value="">Distribution</option>-->
-                                                <option value="ParetoDistribution">ParetoDistribution</option>
-                                                <option value="NormalDistribution">NormalDistribution</option>
-                                                <option value="ContinuousUniformDistribution">ContinuousUniformDistribution</option>
+                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Distribution</i>
+                                            <select name="distrib" class="form-control" id="distrib" attr_id="10" title="Distribution">
+                                                <option value="ParetoDistribution">Pareto</option>
+                                                <option value="NormalDistribution">Normal</option>
                                                 <!--<option value="ParetoDistribution">ContinForm</option>-->
                                             </select>
-                                            <i class="fa fa-distrib-marker fa-2x tm-form-element-icon"></i>
+                                            <!--<i class="fa fa-distrib-marker fa-2x tm-form-element-icon"></i>-->
                                         </div>
                                     </div>
                                         <div class="form-row tm-search-form-row">
                                             <div class="form-group tm-form-element tm-form-element-100">
                                                 <i class="fa mt-1 tm-font-semibold tm-color-primary">Start</i>
                                                 <i class="fa fa-start-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="start" id="start" type="text" class="form-control" id="start"
+                                                <input name="start" id="start" type="text" class="form-control"
                                                        placeholder="Start" value="-250" attr_id="11">
-                                                <!--<span for="start" class="fa fa-start-marker fa-2x tm-form-element-icon"></span>-->
                                             </div>
                                             <div class="form-group tm-form-element tm-form-element-100">
-                                                <!--<i class="fa fa-2x tm-form-element-icon-my">Finish</i>-->
                                                 <i class="fa mt-1 tm-font-semibold tm-color-primary">Finish</i>
                                                 <i class="fa fa-finish-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="finish" id="finish" type="text" class="form-control" id="finish"
+                                                <input name="finish" id="finish" type="text" class="form-control"
                                                        placeholder="Finish" value="100" attr_id="12">
-                                                <!--<label for="finish">Finish</label>-->
                                             </div>
                                             <div class="form-group tm-form-element tm-form-element-100">
-                                                <!--<label for="initCapital">Initial capital:</label>-->
                                                 <i class="fa mt-1 tm-font-semibold tm-color-primary">Step</i>
                                                 <i class="fa fa-step-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="step" id="step" type="text" class="form-control" id="step"
+                                                <input name="step" id="step" type="text" class="form-control"
                                                        placeholder="Step"  value="10" attr_id="13">
+                                            </div>
+                                        </div>
+                                        <div class="form-row tm-search-form-row">
+                                            <div class="form-group tm-form-element tm-form-element-100">
+                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>
+                                                <i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>
+                                                <input name="multiple" id="multiple" type="text" class="form-control"
+                                                       placeholder="Multiple">
                                             </div>
                                         </div>
                                         <!--<div class="form-row tm-search-form-row">-->
@@ -218,278 +178,16 @@
                                             <!--</div>-->
                                         <!--</div>-->
 
+                                    <div class="form-group tm-form-element tm-form-element-2">
+                                        <button type="submit" id="submitbutton" class="btn btn-primary tm-btn-search">Start Experiment</button>
+                                    </div>
 
-                                    <div class="container">
-                                        <section>
-
-                                            <div class="form-group tm-form-element tm-form-element-2">
-                                                <!-- progress button -->
-                                                <div class="progress-button">
-                                                    <button id="submitbutton"><span>Submit</span></button>
-                                                    <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/></svg>
-                                                    <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg>
-                                                    <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg>
-                                                </div><!-- /progress-button -->
-                                            </div>
-                                        </section>
-                                    </div><!-- /container -->
-                                    <script src="js/classie.js"></script>
-                                    <script src="js/uiProgressButton.js"></script>
-                                    <script>
-                                        [].slice.call( document.querySelectorAll( '.progress-button' ) ).forEach( function( bttn, pos ) {
-                                            new UIProgressButton( bttn, {
-                                                callback : function( instance ) {
-                                                    var progress = 0,
-                                                        interval = setInterval( function() {
-                                                            progress = Math.min( progress + Math.random() * 0.1, 1 );
-                                                            instance.setProgress( progress );
-
-                                                            if( progress === 1 ) {
-                                                                instance.stop( pos === 1 || pos === 3 ? -1 : 1 );
-                                                                clearInterval( interval );
-                                                            }
-                                                        }, 150 );
-                                                }
-                                            } );
-                                        } );
-                                    </script>
-
-                                      <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
-                                          <p class="tm-margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                          <a href="#" class="ie-10-ml-auto ml-auto mt-1 tm-font-semibold tm-color-primary">Need Help?</a>
-                                      </div>
                                 </form>
-
-                                <!--<form action="javascript:void(null);" method="get" id="formy" class="tm-search-form tm-section-pad-2" onsubmit="call()">-->
-                                    <!--<p>Графики</p>-->
-                                    <!--<p><input type="checkbox" name="a" value="result"> 1417</p>-->
-                                    <!--<p><input type="checkbox" name="a" value="peopleCount" checked> 1680</p>-->
-                                    <!--<p><input type="submit" value="Отправить"></p>-->
-
-
-                                <!--</form>-->
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="tm-section-2">-->
-                <!--<div class="container">-->
-                    <!--<div class="row">-->
-                        <!--<div class="col text-center">-->
-                            <!--<h2 class="tm-section-title">We are here to help you?</h2>-->
-                            <!--<p class="tm-color-white tm-section-subtitle">Subscribe to get our newsletters</p>-->
-                            <!--<a href="#" class="tm-color-white tm-btn-white-bordered">Subscribe Newletters</a>-->
-                        <!--</div>                -->
-                    <!--</div>-->
-                <!--</div>        -->
-            <!--</div>-->
-            <!---->
-            <!--<div class="tm-section tm-position-relative">-->
-                <!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="tm-section-down-arrow">-->
-                    <!--<polygon fill="#ee5057" points="0,0  100,0  50,60"></polygon>                   -->
-                <!--</svg> -->
-                <!--<div class="container tm-pt-5 tm-pb-4">-->
-                    <!--<div class="row text-center">-->
-                        <!--<article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                            -->
-                            <!--<i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i>-->
-                            <!--<h3 class="tm-color-primary tm-article-title-1">Pellentesque accumsan arcu nec dolor tempus</h3>-->
-                            <!--<p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>-->
-                            <!--<a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>-->
-                        <!--</article>-->
-                        <!--<article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                            -->
-                            <!--<i class="fa tm-fa-6x fa-plane tm-color-primary tm-margin-b-20"></i>-->
-                            <!--<h3 class="tm-color-primary tm-article-title-1">Duis scelerisque metus vel felis porttitor</h3>-->
-                            <!--<p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>-->
-                            <!--<a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>                            -->
-                        <!--</article>-->
-                        <!--<article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                           -->
-                            <!--<i class="fa tm-fa-6x fa-life-saver tm-color-primary tm-margin-b-20"></i>-->
-                            <!--<h3 class="tm-color-primary tm-article-title-1">Etiam aliquam arcu at mauris consectetur</h3>-->
-                            <!--<p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>-->
-                            <!--<a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>                           -->
-                        <!--</article>-->
-                    <!--</div>        -->
-                <!--</div>-->
-            <!--</div>-->
-            <!---->
-            <!--<div class="tm-section tm-section-pad tm-bg-gray" id="tm-section-4">-->
-                <!--<div class="container">-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">-->
-                            <!--<div class="tm-article-carousel">                            -->
-                                <!--<article class="tm-bg-white mr-2 tm-carousel-item">-->
-                                    <!--<img src="img/img-01.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Nunc in felis aliquet metus luctus iaculis</h3></header>-->
-                                        <!--<p>Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla. Nullam sollicitudin at augue venenatis eleifend. Nulla ligula ligula, egestas sit amet viverra id, iaculis sit amet ligula.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">Get More Info.</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>                    -->
-                                <!--<article class="tm-bg-white mr-2 tm-carousel-item">-->
-                                    <!--<img src="img/img-02.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Sed cursus dictum nunc quis molestie</h3></header>-->
-                                        <!--<p>Pellentesque quis dui sit amet purus scelerisque eleifend sed ut eros. Morbi viverra blandit massa in varius. Sed nec ex eu ex tincidunt iaculis. Curabitur eget turpis gravida.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">View Detail</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>-->
-                                <!--<article class="tm-bg-white mr-2 tm-carousel-item">-->
-                                    <!--<img src="img/img-01.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Eget diam pellentesque interdum ut porta</h3></header>-->
-                                        <!--<p>Aenean finibus tempor nulla, et maximus nibh dapibus ac. Duis consequat sed sapien venenatis consequat. Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">More Info.</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>-->
-                                <!--<article class="tm-bg-white mr-2 tm-carousel-item">-->
-                                    <!--<img src="img/img-02.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Lorem ipsum dolor sit amet, consectetur</h3></header>-->
-                                        <!--<p>Suspendisse molestie sed dui eget faucibus. Duis accumsan sagittis tortor in ultrices. Praesent tortor ante, fringilla ac nibh porttitor, fermentum commodo nulla.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">Detail Info.</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>                    -->
-                                <!--<article class="tm-bg-white mr-2 tm-carousel-item">-->
-                                    <!--<img src="img/img-01.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Orci varius natoque penatibus et</h3></header>-->
-                                        <!--<p>Pellentesque quis dui sit amet purus scelerisque eleifend sed ut eros. Morbi viverra blandit massa in varius. Sed nec ex eu ex tincidunt iaculis. Curabitur eget turpis gravida.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">Read More</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>-->
-                                <!--<article class="tm-bg-white tm-carousel-item">-->
-                                    <!--<img src="img/img-02.jpg" alt="Image" class="img-fluid">-->
-                                    <!--<div class="tm-article-pad">-->
-                                        <!--<header><h3 class="text-uppercase tm-article-title-2">Nullam sollicitudin at augue venenatis eleifend</h3></header>-->
-                                        <!--<p>Aenean finibus tempor nulla, et maximus nibh dapibus ac. Duis consequat sed sapien venenatis consequat. Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla.</p>-->
-                                        <!--<a href="#" class="text-uppercase btn-primary tm-btn-primary">More Details</a>-->
-                                    <!--</div>                                -->
-                                <!--</article>-->
-                            <!--</div>    -->
-                        <!--</div>-->
-                        <!---->
-                        <!--<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-recommended-container">-->
-                            <!--<div class="tm-bg-white">-->
-                                <!--<div class="tm-bg-primary tm-sidebar-pad">-->
-                                    <!--<h3 class="tm-color-white tm-sidebar-title">Recommended Places</h3>-->
-                                    <!--<p class="tm-color-white tm-margin-b-0 tm-font-light">Enamel pin cliche tilde, kitsch and VHS thundercats</p>-->
-                                <!--</div>-->
-                                <!--<div class="tm-sidebar-pad-2">-->
-                                    <!--<a href="#" class="media tm-media tm-recommended-item">-->
-                                        <!--<img src="img/tn-img-01.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body tm-bg-gray">-->
-                                            <!--<h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Europe</h4>-->
-                                        <!--</div>                                        -->
-                                    <!--</a>-->
-                                    <!--<a href="#" class="media tm-media tm-recommended-item">-->
-                                        <!--<img src="img/tn-img-02.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body tm-bg-gray">-->
-                                            <!--<h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Asia</h4>-->
-                                        <!--</div>-->
-                                    <!--</a>-->
-                                    <!--<a href="#" class="media tm-media tm-recommended-item">-->
-                                        <!--<img src="img/tn-img-03.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body tm-bg-gray">-->
-                                            <!--<h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Africa</h4>-->
-                                        <!--</div>-->
-                                    <!--</a>-->
-                                    <!--<a href="#" class="media tm-media tm-recommended-item">-->
-                                        <!--<img src="img/tn-img-04.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body tm-bg-gray">-->
-                                            <!--<h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">South America</h4>-->
-                                        <!--</div>-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            <!--</div>                            -->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="tm-bg-video">-->
-                <!--<div class="overlay">-->
-                    <!--<i class="fa fa-5x fa-play-circle tm-btn-play"></i>-->
-                    <!--<i class="fa fa-5x fa-pause-circle tm-btn-pause"></i>-->
-                <!--</div>-->
-                <!--<video controls="" loop="" class="tmVideo">-->
-                    <!--<source src="videos/video.mp4" type="video/mp4">-->
-                    <!--<source src="videos/video.ogg" type="video/ogg">-->
-                    <!--Your browser does not support the video tag.-->
-                <!--</video>-->
-                <!--<div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">-->
-                    <!--<div class="container ie-h-align-center-fix">-->
-                        <!--<div class="row tm-flex-align-center">-->
-                            <!--<div class="col-xs-12 col-md-12 col-lg-3 col-xl-3 tm-media-title-container">-->
-                                <!--<h2 class="text-uppercase tm-section-title-2">ASIA</h2>-->
-                                <!--<h3 class="tm-color-primary tm-font-semibold tm-section-subtitle-2">Singapore</h3>-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-12 col-md-12 col-lg-9 col-xl-9 mt-0 mt-sm-3">-->
-                                <!--<div class="ml-auto tm-bg-white-shadow tm-pad tm-media-container">-->
-                                    <!--<article class="media tm-margin-b-20 tm-media-1">-->
-                                        <!--<img src="img/img-03.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body-1 tm-media-body-v-center">-->
-                                            <!--<h3 class="tm-font-semibold tm-color-primary tm-article-title-3">Suspendisse vel est libero sem phasellus ac laoreet</h3>-->
-                                            <!--<p>Integer libero purus, consectetur vitae posuere quis, maximus id diam. Vivamus eget tellus ornare, sollicitudin quam id, dictum nulla. Phasellus finibus rhoncus justo, tempus eleifend neque dictum ac. Aenean metus leo, consectetur non.-->
-                                            <!--<br><br>-->
-											<!--Etiam aliquam arcu at mauris consectetur scelerisque. Integer elementum justo in orci facilisis ultricies. Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida.</p>-->
-                                        <!--</div>-->
-                                    <!--</article>-->
-                                    <!--<article class="media tm-margin-b-20 tm-media-1">-->
-                                        <!--<img src="img/img-04.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body-1 tm-media-body-v-center">-->
-                                            <!--<h3 class="tm-font-semibold tm-article-title-3">Suspendisse vel est libero sem phasellus ac laoreet</h3>-->
-                                            <!--<p>Duis accumsan sagittis tortor in ultrices. Praesent tortor ante, fringilla ac nibh porttitor, fermentum commodo nulla.</p>-->
-                                            <!--<a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>-->
-                                        <!--</div>-->
-                                    <!--</article>-->
-                                    <!--<article class="media tm-margin-b-20 tm-media-1">-->
-                                        <!--<img src="img/img-05.jpg" alt="Image">-->
-                                        <!--<div class="media-body tm-media-body-1 tm-media-body-v-center">-->
-                                            <!--<h3 class="tm-font-semibold tm-article-title-3">Faucibus dolor ligula nisl metus auctor aliquet</h3>-->
-                                            <!--<p>Nunc in felis aliquet metus luctus iaculis vel et nisi. Nulla venenatis nisl orci, laoreet ultricies massa tristique id.</p>-->
-                                            <!--<a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>-->
-                                        <!--</div>-->
-                                    <!--</article>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="tm-section tm-section-pad tm-bg-img tm-position-relative" id="tm-section-6">-->
-                <!--<div class="container ie-h-align-center-fix">-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-7">-->
-                            <!--<div id="google-map"></div>        -->
-                        <!--</div>-->
-                        <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-5 mt-3 mt-md-0">-->
-                            <!--<div class="tm-bg-white tm-p-4">-->
-                                <!--<form action="index.html" method="post" class="contact-form">-->
-                                    <!--<div class="form-group">-->
-                                        <!--<input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<input type="text" id="contact_subject" name="contact_subject" class="form-control" placeholder="Subject"  required/>-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>-->
-                                    <!--</div>-->
-                                    <!--<button type="submit" class="btn btn-primary tm-btn-primary">Send Message Now</button>-->
-                                <!--</form>-->
-                            <!--</div>                            -->
-                        <!--</div>-->
-                    <!--</div>        -->
-                <!--</div>-->
-            <!--</div>-->
-
             <style>
                 #myProgress {
                     width: 100%;
@@ -506,55 +204,8 @@
 
             <div id="myProgress">
                 <div id="myBar"></div>
-                <!--<button onclick="move()">Click Me</button>-->
             </div>
 
-            <!--<table id="example" class="display" cellspacing="0" width="100%">-->
-                <!--<thead>-->
-                <!--<tr>-->
-                    <!--<th>Name</th>-->
-                    <!--<th>Position</th>-->
-                    <!--<th>Office</th>-->
-                    <!--<th>Age</th>-->
-                    <!--<th>Start date</th>-->
-                    <!--<th>Salary</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-                <!--<tfoot>-->
-                <!--<tr>-->
-                    <!--<th>Name</th>-->
-                    <!--<th>Position</th>-->
-                    <!--<th>Office</th>-->
-                    <!--<th>Age</th>-->
-                    <!--<th>Start date</th>-->
-                    <!--<th>Salary</th>-->
-                <!--</tr>-->
-                <!--</tfoot>-->
-                <!--<tbody>-->
-                <!--<tr>-->
-                    <!--<td>Tiger Nixon</td>-->
-                    <!--<td>System Architect</td>-->
-                    <!--<td>Edinburgh</td>-->
-                    <!--<td>61</td>-->
-                    <!--<td>2011/04/25</td>-->
-                    <!--<td>$320,800</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td>Garrett Winters</td>-->
-                    <!--<td>Accountant</td>-->
-                    <!--<td>Tokyo</td>-->
-                    <!--<td>63</td>-->
-                    <!--<td>2011/07/25</td>-->
-                    <!--<td>$170,750</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-            <!--</table>-->
-
-            <!--<script>-->
-                <!--$(document).ready(function() {-->
-                    <!--$('#example').DataTable();-->
-                <!--} );-->
-            <!--</script>-->
 
 
             <div id="myDiv"></div>
@@ -571,10 +222,6 @@
             </footer>
         </div>
 
-
-
-        <!--<div id="myDiv">&lt;!&ndash; Plotly chart will be drawn inside this DIV &ndash;&gt;</div>-->
-
         <!-- load JS files -->
         <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
         <script src="js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->
@@ -583,7 +230,7 @@
         <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
         <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
         <script src="js/plotly-latest.min.js"></script>
-        <script src="js/button.js"></script>
+        <!--<script src="js/button.js"></script>-->
 
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/jquery.serializeObject.js"></script>
@@ -705,16 +352,19 @@
         <script>
             function callPercentage() {
                 var elem = document.getElementById("myBar");
-                var width = 1;
-                var id = setInterval(frame, 10);
+                var id = setInterval(frame, 100);
+                var reset = 0;
                 function frame() {
-                    //width++;
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/percentage',
                         success: function(data) {
                             elem.style.width = data * 100 + '%';
-//                            alert(data);
+                            if (data >= 1) reset++;
+                            if (reset >= 5) {
+                                clearInterval(id);
+                                reset = 0;
+                            }
                             //$('#results').html(data);
                         },
                         error:  function(xhr, str){
@@ -722,26 +372,25 @@
                         },
                         dataType: "json"
                     });
-                    if (width >= 100) clearInterval(id);
                 }
             }
         </script>
 
-        <script>
-            function move() {
-                var elem = document.getElementById("myBar");
-                var width = 1;
-                var id = setInterval(frame, 10);
-                function frame() {
-                    if (width >= 100) {
-                        clearInterval(id);
-                    } else {
-                        width++;
-                        elem.style.width = width + '%';
-                    }
-                }
-            }
-        </script>
+        <!--<script>-->
+            <!--function move() {-->
+                <!--var elem = document.getElementById("myBar");-->
+                <!--var width = 1;-->
+                <!--var id = setInterval(frame, 10);-->
+                <!--function frame() {-->
+                    <!--if (width >= 100) {-->
+                        <!--clearInterval(id);-->
+                    <!--} else {-->
+                        <!--width++;-->
+                        <!--elem.style.width = width + '%';-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+        <!--</script>-->
 
         <script>
             function serialize() {
