@@ -225,72 +225,13 @@
         <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
         <script src="js/plotly-latest.min.js"></script>
         <!--<script src="js/button.js"></script>-->
-
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/jquery.serializeObject.js"></script>
-        <!--script
-                src="https://code.jquery.com/jquery-1.12.3.min.js"
-                integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
-                crossorigin="anonymous"></--script-->
 
-        <!--<script>-->
-            <!--$('#submitbutton').click(function() {-->
-<!--//                alert("sdfsd");-->
-                <!--$.ajax({-->
-                    <!--type: "GET",-->
-                    <!--url: "http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld",-->
-                    <!--success: function (data) {-->
-<!--//                alert(data[0]);-->
-                        <!--var trace1 = {-->
-                            <!--x: data[0],-->
-                            <!--y: data[1],-->
-                            <!--type: 'scatter'-->
-                        <!--};-->
-                        <!--var data = [trace1];-->
-                        <!--Plotly.newPlot('myDiv', data);-->
-                    <!--},-->
-                    <!--dataType: "json"-->
-                <!--});-->
-            <!--});-->
-        <!--</script>-->
          <script>
-//             function call() {
-//                 callPercentage();
-//                 var msg   = $('#formx').serialize();
-//                 $.ajax({
-//                     type: 'GET',
-//                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
-//                     data: msg,
-//                     success: function(data) {
-////                        alert(data);
-//                         var trace1 = {
-//                             x: data[0],
-//                             y: data[1],
-//                             mode: 'lines+markers',
-//                             name: 'Result',
-//                             line: {shape: 'spline'},
-//                             type: 'scatter'
-//                         };
-//                         var trace2 = {
-//                             x: data[0],
-//                             y: data[2],
-//                             mode: 'lines+markers',
-//                             name: 'People Count',
-//                             line: {shape: 'spline'},
-//                             type: 'scatter'
-//                         };
-//                         var plotdata = [trace1, trace2];
-//                         Plotly.newPlot('myDiv', plotdata);
-//                         //$('#results').html(data);
-//                     },
-//                     error:  function(xhr, str){
-//                         alert('Возникла ошибка: ' + xhr.responseCode);
-//                     },
-//                     dataType: "json"
-//                 });
-//             }
             $('#submitbutton').click(function() {
-
+                var variation = $('#var').val();
+                //alert(variation);
 //                var a = $('#formx').serializeObject();
                 var a = serialize();
                 console.log(a);
@@ -304,18 +245,22 @@
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
                     data: msg,
                     success: function(data) {
-//                        alert(data);
+//                        alert("saf");
+//                        alert(data.mu);
+                        var xData = (variation == "mu") ? data.mu : data.sigma;
+                        alert(xData);
                         var trace1 = {
-                            x: data[0],
-                            y: data[1],
+                            x: xData,
+//                            x: data.mu,
+                            y: data.capital,
                             mode: 'lines+markers',
                             name: 'Result',
                             line: {shape: 'spline'},
                             type: 'scatter'
                         };
                         var trace2 = {
-                            x: data[0],
-                            y: data[2],
+                            x: xData,
+                            y: data.peopleCount,
                             mode: 'lines+markers',
                             name: 'People Count',
                             line: {shape: 'spline'},
