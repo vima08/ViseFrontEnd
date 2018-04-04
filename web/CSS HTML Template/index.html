@@ -18,6 +18,12 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" href="css/tooplate-style.css">                                   <!-- Templatemo style -->
 
+        <!--<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">-->
+
+        <!--<script type="text/javascript" src="js/jquery.dataTables.js"></script>-->
+
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
         <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     </head>
@@ -177,7 +183,7 @@
                                     </div>
 
                                 </form>
-                            </div>                        
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -235,46 +241,53 @@
 //                var a = $('#formx').serializeObject();
                 var a = serialize();
                 console.log(a);
-                $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/save',
-                    {data: JSON.stringify(a)});
+                $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/generate',
+                    function onAjaxSuccess(objId){
+                        $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/saveForm',
+                            {data: JSON.stringify(a), objId: objId});
 
-                callPercentage();
-                var msg   = $('#formx').serialize();
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
-                    data: msg,
-                    success: function(data) {
-//                        alert("saf");
-//                        alert(data.mu);
-                        var xData = (variation == "mu") ? data.mu : data.sigma;
-                        alert(xData);
-                        var trace1 = {
-                            x: xData,
-//                            x: data.mu,
-                            y: data.capital,
-                            mode: 'lines+markers',
-                            name: 'Result',
-                            line: {shape: 'spline'},
-                            type: 'scatter'
-                        };
-                        var trace2 = {
-                            x: xData,
-                            y: data.peopleCount,
-                            mode: 'lines+markers',
-                            name: 'People Count',
-                            line: {shape: 'spline'},
-                            type: 'scatter'
-                        };
-                        var plotdata = [trace1, trace2];
-                        Plotly.newPlot('myDiv', plotdata);
-                        //$('#results').html(data);
-                    },
-                    error:  function(xhr, str){
-                        alert('Возникла ошибка: ' + xhr.responseCode);
-                    },
-                    dataType: "json"
-                });
+                        callPercentage();
+                        var msg   = $('#formx').serialize();
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
+                            data: msg,
+                            success: function(data) {
+                                //alert(data);
+                                var xData = (variation == "mu") ? data.mu : data.sigma;
+
+                                console.log(data);
+                                var trace1 = {
+                                    x: xData,
+                                    y: data.capital,
+                                    mode: 'lines+markers',
+                                    name: 'Result',
+                                    line: {shape: 'spline'},
+                                    type: 'scatter'
+                                };
+                                var trace2 = {
+                                    x: xData,
+                                    y: data.peopleCount,
+                                    mode: 'lines+markers',
+                                    name: 'People Count',
+                                    line: {shape: 'spline'},
+                                    type: 'scatter'
+                                };
+                                var plotdata = [trace1, trace2];
+                                Plotly.newPlot('myDiv', plotdata);
+                                //$('#results').html(data);
+
+                                $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/saveResult',
+                                    {result: JSON.stringify(data), objId: objId});
+                            },
+                            error:  function(xhr, str){
+                                alert('Возникла ошибка: ' + xhr.responseCode);
+                            },
+                            dataType: "json"
+                        });
+                    }
+                );
+
 //                return false;
             });
         </script>
