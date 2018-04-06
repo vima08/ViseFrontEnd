@@ -166,17 +166,6 @@
                                                        placeholder="Multiple">
                                             </div>
                                         </div>
-                                        <!--<div class="form-row tm-search-form-row">-->
-                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
-                                                <!--&lt;!&ndash;<label for="initCapital">Initial capital:</label>&ndash;&gt;-->
-                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>-->
-                                                <!--<i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>-->
-                                                <!--&lt;!&ndash;<i class="fa fa-multiple-marker fa-2x tm-form-element-icon"></i>&ndash;&gt;-->
-                                                <!--<input name="multiple" id="multiple" type="text" class="form-control" id="multiple"-->
-                                                       <!--placeholder="Multiple">-->
-                                                <!--&lt;!&ndash;<label for="multiple">Multiple</label>&ndash;&gt;-->
-                                            <!--</div>-->
-                                        <!--</div>-->
 
                                     <div class="form-group tm-form-element tm-form-element-2">
                                         <button type="submit" id="submitbutton" class="btn btn-primary tm-btn-search">Start Experiment</button>
@@ -201,12 +190,9 @@
                 }
             </style>
 
-
             <div id="myProgress">
                 <div id="myBar"></div>
             </div>
-
-
 
             <div id="myDiv"></div>
 
@@ -235,61 +221,82 @@
         <script src="js/jquery.serializeObject.js"></script>
 
          <script>
+             var db = false;
             $('#submitbutton').click(function() {
-                var variation = $('#var').val();
-                //alert(variation);
-//                var a = $('#formx').serializeObject();
-                var a = serialize();
-                console.log(a);
-                $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/generate',
-                    function onAjaxSuccess(objId){
-                        $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/saveForm',
-                            {data: JSON.stringify(a), objId: objId});
+                if (db) {
 
-                        callPercentage();
-                        var msg   = $('#formx').serialize();
-                        $.ajax({
-                            type: 'GET',
-                            url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/plot',
-                            data: msg,
-                            success: function(data) {
-                                //alert(data);
-                                var xData = (variation == "mu") ? data.mu : data.sigma;
+                    var a = serialize();
+                    console.log(a);
+                    $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
+                        function onAjaxSuccess(objId) {
 
-                                console.log(data);
-                                var trace1 = {
-                                    x: xData,
-                                    y: data.capital,
-                                    mode: 'lines+markers',
-                                    name: 'Result',
-                                    line: {shape: 'spline'},
-                                    type: 'scatter'
-                                };
-                                var trace2 = {
-                                    x: xData,
-                                    y: data.peopleCount,
-                                    mode: 'lines+markers',
-                                    name: 'People Count',
-                                    line: {shape: 'spline'},
-                                    type: 'scatter'
-                                };
-                                var plotdata = [trace1, trace2];
-                                Plotly.newPlot('myDiv', plotdata);
-                                //$('#results').html(data);
+                            $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',
+                                {data: JSON.stringify(a), objId: objId});
+                            callPercentage();
+                            var msg = $('#formx').serialize();
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                                data: msg,
+                                success: function (data) {
+                                    //alert(data);
+                                    drawResult(data);
 
-                                $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/saveResult',
-                                    {result: JSON.stringify(data), objId: objId});
-                            },
-                            error:  function(xhr, str){
-                                alert('Возникла ошибка: ' + xhr.responseCode);
-                            },
-                            dataType: "json"
-                        });
-                    }
-                );
-
-//                return false;
+                                    $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',
+                                        {result: JSON.stringify(data), objId: objId});
+                                },
+                                error: function (xhr, str) {
+                                    alert('Возникла ошибка: ' + xhr.responseCode);
+                                },
+                                dataType: "json"
+                            });
+                        }
+                    );
+                } else {
+                    callPercentage();
+                    var msg = $('#formx').serialize();
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                        data: msg,
+                        success: function (data) {
+                            drawResult(data);
+                        },
+                        error: function (xhr, str) {
+                            alert('Возникла ошибка: ' + xhr.responseCode);
+                        },
+                        dataType: "json"
+                    });
+                }
             });
+        </script>
+
+        <script>
+            function drawResult(data) {
+                var variation = $('#var').val();
+                var xData = (variation === "mu") ? data.mu : data.sigma;
+
+                //console.log(data);
+                var trace1 = {
+                    x: xData,
+                    y: data.capital,
+                    mode: 'lines+markers',
+                    name: 'Result',
+                    line: {shape: 'spline'},
+                    type: 'scatter'
+                };
+                var trace2 = {
+                    x: xData,
+                    y: data.peopleCount,
+                    mode: 'lines+markers',
+                    name: 'People Count',
+                    line: {shape: 'spline'},
+                    type: 'scatter'
+                };
+                var plotdata = [trace1, trace2];
+                Plotly.newPlot('myDiv', plotdata);
+                //$('#results').html(data);
+            }
         </script>
 
         <script>
@@ -300,7 +307,7 @@
                 function frame() {
                     $.ajax({
                         type: 'GET',
-                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/helloworld/percentage',
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/percentage',
                         success: function(data) {
                             elem.style.width = data * 100 + '%';
                             if (data >= 1) reset++;
@@ -318,22 +325,6 @@
                 }
             }
         </script>
-
-        <!--<script>-->
-            <!--function move() {-->
-                <!--var elem = document.getElementById("myBar");-->
-                <!--var width = 1;-->
-                <!--var id = setInterval(frame, 10);-->
-                <!--function frame() {-->
-                    <!--if (width >= 100) {-->
-                        <!--clearInterval(id);-->
-                    <!--} else {-->
-                        <!--width++;-->
-                        <!--elem.style.width = width + '%';-->
-                    <!--}-->
-                <!--}-->
-            <!--}-->
-        <!--</script>-->
 
         <script>
             function serialize() {

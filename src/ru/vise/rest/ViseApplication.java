@@ -14,6 +14,8 @@ public class ViseApplication extends Application {
     public Set<Class<?>> getClasses() {
         HashSet h = new HashSet<Class<?>>();
         h.add( HelloWorld.class );
+        h.add( ViseExperiment.class );
+        h.add( DataBase.class );
         return h;
     }
 }
