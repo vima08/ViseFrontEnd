@@ -1,17 +1,17 @@
 package ru.vise.entities;
 
-import javax.persistence.*;
+import javax.persistence.*; //TODO Max
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "object", schema = "vise")
-public class ObjectEntity implements Serializable{
+public class ObjectEntity implements Serializable{ //TODO Max обязательно пробел перед '{' . Почему не все сущности Serializable ?
     private int objectId;
     private String name;
     private String description;
-    private ObjectEntity objectsByParentId;
+    private ObjectEntity objectsByParentId; //TODO Max Не надо objectsByParentId, просто parentId. Или просто parent, если весь объет приходит
 
     @Id
     @Column(name = "object_id", nullable = false)
@@ -45,7 +45,7 @@ public class ObjectEntity implements Serializable{
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) { //TODO Max В конец
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -59,7 +59,7 @@ public class ObjectEntity implements Serializable{
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() { //TODO Max В конец
         int result = objectId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -76,7 +76,7 @@ public class ObjectEntity implements Serializable{
         this.objectsByParentId = objectsByParentId;
     }
 
-    private Set<ParamEntity> paramsOfObject = new HashSet<ParamEntity>();
+    private Set<ParamEntity> paramsOfObject = new HashSet<ParamEntity>(); //TODO Max В начало
 
     @OneToMany(mappedBy = "objectsByObjectId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     public Set<ParamEntity> getParamsOfObject() {

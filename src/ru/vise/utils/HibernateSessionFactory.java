@@ -10,7 +10,7 @@ public class HibernateSessionFactory {
     private static SessionFactory sessionFactory = buildSessionFactory();
 
     protected static SessionFactory buildSessionFactory() {
-        // A SessionFactory is set up once for an application!
+        // A SessionFactory is set up once for an application! //TODO Max Выпилить
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
@@ -22,7 +22,7 @@ public class HibernateSessionFactory {
             // so destroy it manually.
             StandardServiceRegistryBuilder.destroy( registry );
 
-            throw new ExceptionInInitializerError("Initial SessionFactory failed " + e);
+            throw new ExceptionInInitializerError("Initial SessionFactory failed " + e); //TODO Max ExceptionInInitializerError(e) эксэпшен скажет больше чем ту стринг от него
         }
         return sessionFactory;
     }
@@ -32,7 +32,7 @@ public class HibernateSessionFactory {
         return sessionFactory;
     }
 
-    public static void shutdown() {
+    public static void shutdown() { //TODO Max Кто-то должен вызывать этот метод, иначе будет утечка ресурсов.
         // Close caches and connection pools
         getSessionFactory().close();
     }

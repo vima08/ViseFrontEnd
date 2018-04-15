@@ -9,17 +9,17 @@ import ru.vise.entities.ObjectEntity;
 import ru.vise.entities.ParamEntity;
 import ru.vise.utils.HibernateSessionFactory;
 
-import javax.swing.*;
-import javax.ws.rs.*;
+import javax.swing.*; //TODO Art Не используй импорт звёздочкой в диффах, не будет видно добавление нового класса
+import javax.ws.rs.*; //TODO Art
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.*; //TODO Art
 
 @Path("/database")
-public class DataBase {
+public class DataBase { //TODO Art DataBaseWebService
     @GET
     @Produces("text/plain")
     @Path("/generate")
-    public String getGenerateObject(){
+    public String getGenerateObject(){ //TODO Art Выпиливай тестовые методы - это мусор. В крайнем случае выноси их в Unit тесты
         ObjectEntity objectEntity = new ObjectEntity();
         objectEntity.setName("Testing");
         objectEntity.setDescription(String.format("%tc", new Date()));
@@ -27,7 +27,7 @@ public class DataBase {
         Session session = null;
         Integer objectId = new Integer(0);
         try {
-            session = HibernateSessionFactory.getSessionFactory().openSession();
+            session = HibernateSessionFactory.getSessionFactory().openSession(); //TODO Art Нафиг сессию и транзакции из вебсервиса, вынести в спец. класс в managers пакет
             session.beginTransaction();
             objectId = (Integer) session.save(objectEntity);
             session.getTransaction().commit();
@@ -43,17 +43,18 @@ public class DataBase {
 
     @POST
     @Path("/saveForm")
-    public void getInputObj(@FormParam("data") String data, @FormParam("objId") String objectId){
-        Type itemsMapType = new TypeToken<Map<Integer, String>>() {}.getType();
-        Map<Integer, String> mapDataForm = new Gson().fromJson(data, itemsMapType);
-        Iterator<Integer> mapDataFormIter = mapDataForm.keySet().iterator();
+    public void getInputObj(@FormParam("data") String data, @FormParam("objId") String objectId){ //TODO Art Заупутывающее название
+        Type itemsMapType = new TypeToken<Map<Integer, String>>() {}.getType(); //TODO Art не надо создавать переменную, если используешь 1 раз. new Gson().fromJson(data, new TypeToken ...)
+        Map<Integer, String> mapDataForm = new Gson().fromJson(data, itemsMapType); //TODO Art mapDataForm -> formDataMap
+        Iterator<Integer> mapDataFormIter = mapDataForm.keySet().iterator(); //TODO Art Iter - Iterator не надо экономить символы в ущерб читаемости
 
-        Session session = null;
+        Session session = null; //TODO Art
         try {
-            session = HibernateSessionFactory.getSessionFactory().openSession();
-            session.beginTransaction();
+            session = HibernateSessionFactory.getSessionFactory().openSession(); //TODO Art
+            session.beginTransaction(); //TODO Art
 
-//            ObjectEntity objectEntity = new ObjectEntity();
+//            ObjectEntity objectEntity = new ObjectEntity(); //TODO Art Выпиливай если не нужно, а если планируешь использовать, то оставляй
+//// todo с описанием того, как будешь использовать и когда планируешь сделать
 //            objectEntity.setName("Testing");
 //            objectEntity.setDescription(String.format("%tc", new Date()));
 //            Integer objId = (Integer) session.save(objectEntity);
@@ -89,11 +90,11 @@ public class DataBase {
 
     @POST
     @Path("/saveResult")
-    public void saveResult(@FormParam("result") String result, @FormParam("objId") String objId){
-        Type itemsListType = new TypeToken<List<String[]>>() {}.getType();
-        List<String[]> listResult = new Gson().fromJson(result, itemsListType);
+    public void saveResult(@FormParam("result") String result, @FormParam("objId") String objId){ //TODO Art Сэйв того туда - не экономим символы
+        Type itemsListType = new TypeToken<List<String[]>>() {}.getType(); //TODO Art
+        List<String[]> listResult = new Gson().fromJson(result, itemsListType); //TODO Art listResult -> resultList
 
-//        Type itemsArrType = new TypeToken<String[]>() {}.getType();
+//        Type itemsArrType = new TypeToken<String[]>() {}.getType(); //TODO Art Выпиливай
 //        String[] arrItemsDes = new Gson().fromJson(result, itemsArrType);
 //        List<String> listResult = new ArrayList<>();
 //
@@ -101,10 +102,10 @@ public class DataBase {
 //            listResult.add(arrItemsDes[i]);
 //        }
 
-        Session session = null;
+        Session session = null; //TODO Art
         try {
-            session = HibernateSessionFactory.getSessionFactory().openSession();
-            session.beginTransaction();
+            session = HibernateSessionFactory.getSessionFactory().openSession(); //TODO Art
+            session.beginTransaction(); //TODO Art
 
             ObjectEntity objectEntity = session.find(ObjectEntity.class, Integer.parseInt(objId));
 
@@ -112,13 +113,13 @@ public class DataBase {
             paramEntityAbs.setObjectsByObjectId(objectEntity);
 
             ListValueEntity listValueEntityAbs = new ListValueEntity();
-            listValueEntityAbs.setValue(Arrays.toString(listResult.get(0)));
-            listValueEntityAbs.setNumber(listResult.get(0).length);
-            listValueEntityAbs.setAttributesByAttrId(session.find(AttributeEntity.class,15));
+            listValueEntityAbs.setValue(Arrays.toString(listResult.get(0))); //TODO Art Выноси магические константы в топ класса, pvivate static Integer BAL_BLA = 0
+            listValueEntityAbs.setNumber(listResult.get(0).length); //TODO Art
+            listValueEntityAbs.setAttributesByAttrId(session.find(AttributeEntity.class,15)); //TODO Art
             Integer listValueAbsId = (Integer)session.save(listValueEntityAbs);
 
             objectEntity.getParamsOfObject().add(paramEntityAbs);
-            paramEntityAbs.setAttributesByAttrId(session.find(AttributeEntity.class,15));
+            paramEntityAbs.setAttributesByAttrId(session.find(AttributeEntity.class,15)); //TODO Art
             paramEntityAbs.setValue(listValueAbsId.toString());
             session.save(paramEntityAbs);
             session.update(objectEntity);
@@ -130,10 +131,10 @@ public class DataBase {
                 ListValueEntity listValueEntity = new ListValueEntity();
                 listValueEntity.setValue(Arrays.toString(listResult.get(i)));
                 listValueEntity.setNumber(listResult.get(i).length);
-                listValueEntity.setAttributesByAttrId(session.find(AttributeEntity.class,14));
+                listValueEntity.setAttributesByAttrId(session.find(AttributeEntity.class,14)); //TODO Art
                 Integer listValueId = (Integer)session.save(listValueEntity);
 
-                paramEntity.setAttributesByAttrId(session.find(AttributeEntity.class, 14));
+                paramEntity.setAttributesByAttrId(session.find(AttributeEntity.class, 14)); //TODO Art
                 paramEntity.setValue(listValueId.toString());
                 objectEntity.getParamsOfObject().add(paramEntity);
                 session.save(paramEntity);

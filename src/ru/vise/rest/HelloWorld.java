@@ -1,7 +1,7 @@
 package ru.vise.rest;
 
-import javax.swing.*;
-import javax.ws.rs.*;
+import javax.swing.*; //TODO Max
+import javax.ws.rs.*; //TODO Max
 
 import altr.BackEnd;
 import com.google.gson.Gson;
@@ -16,16 +16,16 @@ import ru.vise.utils.HibernateSessionFactory;
 import sun.plugin.javascript.navig.Array;
 
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.*; //TODO Max
 
-// The Java class will be hosted at the URI path "/helloworld"
-@Path("/helloworld")
-public class HelloWorld {
+// The Java class will be hosted at the URI path "/helloworld" //TODO Art Выпилить
+@Path("/helloworld") //TODO Vlad Оцени, что по твоему делает этот вебсервис и переименуй его так чтобы было ясно, что он делает.
+public class HelloWorld { //TODO Vlad XxxWebService
     @GET
-    // The Java method will produce content identified by the MIME Media type "text/plain"
+    // The Java method will produce content identified by the MIME Media type "text/plain" //TODO Art Выпилить
     @Produces("text/plain")
     @Path("/plot")
-    public String getClichedMessage(@QueryParam("test") Integer test, @QueryParam("q") String q,
+    public String getClichedMessage(@QueryParam("test") Integer test, @QueryParam("q") String q, //TODO Art Переименовать, тест и ку - выпилить
                                     @QueryParam("capital") Double capital,
                                     @QueryParam("mu") Double mu,
                                     @QueryParam("sigma") Double sigma,
@@ -53,11 +53,11 @@ public class HelloWorld {
 
     @GET
     @Path("/percentage")
-    public String getPercentage() {
+    public String getPercentage() { //TODO Art Должно быть ясно, проценты чего, из назавания
         return Double.toString(BackEnd.getPercentage());
     }
 
-//    @GET
+//    @GET //TODO Art Выпиливай ненужное - больше половины класса - мусор
 //    @Produces("text/plain")
 //    @Path("/generate")
 //    public String getGenerateObject(){

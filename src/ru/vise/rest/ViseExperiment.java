@@ -6,12 +6,12 @@ import com.google.gson.Gson;
 import javax.ws.rs.*;
 
 @Path("/experiment")
-public class ViseExperiment {
+public class ViseExperiment { //TODO Art ViseExperimentWebService
     @GET
-    // The Java method will produce content identified by the MIME Media type "text/plain"
+    // The Java method will produce content identified by the MIME Media type "text/plain" //TODO Art Выпилить
     @Produces("text/plain")
     @Path("/run")
-    public String getClichedMessage(@QueryParam("test") Integer test, @QueryParam("q") String q,
+    public String getClichedMessage(@QueryParam("test") Integer test, @QueryParam("q") String q, //TODO Art Удали дублирующиеся методы
                                     @QueryParam("capital") Double capital,
                                     @QueryParam("mu") Double mu,
                                     @QueryParam("sigma") Double sigma,
@@ -26,8 +26,8 @@ public class ViseExperiment {
                                     @QueryParam("finish") Integer finish,
                                     @QueryParam("step")Integer step,
                                     @QueryParam("multiple") Double multiple) {
-        // Return some cliched textual content
-        String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
+        // Return some cliched textual content //TODO Art Выпилить
+        String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma, //TODO Art Не надо создавать переменную если 1 юсадж, сразу return, или логируй переменную
                 k, iteration, stepNumber, peopleCount,
                 majorityThreshold, start, finish, step, var));
         return json;
