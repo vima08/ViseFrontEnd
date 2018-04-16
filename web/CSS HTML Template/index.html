@@ -18,14 +18,14 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" href="css/tooplate-style.css">                                   <!-- Templatemo style -->
 
-        <!--<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"> //TODO Max Выпиливай -->
+        <!--<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">-->
 
-        <!--<script type="text/javascript" src="js/jquery.dataTables.js"></script> //TODO Max Выпиливай -->
+        <!--<script type="text/javascript" src="js/jquery.dataTables.js"></script>-->
 
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> //TODO Art Выпиливай -->
-        <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> //TODO Art Выпиливай -->
+        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+        <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     </head>
 
     <body>
@@ -49,7 +49,7 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
                                   </li>
-                                  <!--<li class="nav-item"> //TODO Art Выпиливай -->
+                                  <!--<li class="nav-item">-->
                                     <!--<a class="nav-link" href="#tm-section-4">History</a>-->
                                   <!--</li>-->
                                   <!--<li class="nav-item">-->
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tm-section tm-bg-img" id="tm-section-1">  <!--//TODO Art Индекс не должен содержать форму раз она генерируется кодом -->
+            <div class="tm-section tm-bg-img" id="tm-section-1">
                 <div class="tm-bg-white ie-container-width-fix-2">
                     <div class="container ie-h-align-center-fix">
                         <div class="row">
@@ -221,12 +221,12 @@
         <script src="js/jquery.serializeObject.js"></script>
 
          <script>
-             var db = false; //TODO Art Нужно более понятное название
+             var db = false;
             $('#submitbutton').click(function() {
                 if (db) {
 
                     var a = serialize();
-                    console.log(a); //TODO Art http://localhost:8080/ViseFrontEnd_war_exploded - вынести в константу
+                    console.log(a);
                     $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
                         function onAjaxSuccess(objId) {
 
@@ -254,7 +254,7 @@
                     );
                 } else {
                     callPercentage();
-                    var msg = $('#formx').serialize(); //TODO Art Говорящее назание нужно форме
+                    var msg = $('#formx').serialize();
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
@@ -305,7 +305,7 @@
 
         <script>
             function callPercentage() {
-                var elem = document.getElementById("myBar"); //TODO Art Говорящее назание нужно, через jQuery можно
+                var elem = document.getElementById("myBar");
                 var id = setInterval(frame, 100);
                 var reset = 0;
                 function frame() {
