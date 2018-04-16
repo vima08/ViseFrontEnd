@@ -1,11 +1,11 @@
 package ru.vise.entities;
 
-import javax.persistence.*; //TODO Max
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "param", schema = "vise")
-public class ParamEntity implements Serializable{ //TODO Max
+public class ParamEntity implements Serializable{
     private int paramId;
     private String value;
     private ObjectEntity objectsByObjectId;
@@ -33,7 +33,7 @@ public class ParamEntity implements Serializable{ //TODO Max
     }
 
     @Override
-    public boolean equals(Object o) { //TODO Max В конец
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -46,7 +46,7 @@ public class ParamEntity implements Serializable{ //TODO Max
     }
 
     @Override
-    public int hashCode() { //TODO Max В конец
+    public int hashCode() {
         int result = paramId;
         result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;

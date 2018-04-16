@@ -1,6 +1,6 @@
 package ru.vise.entities;
 
-import javax.persistence.*; //TODO Max
+import javax.persistence.*;
 
 @Entity
 @Table(name = "listvalue", schema = "vise")
@@ -8,7 +8,7 @@ public class ListValueEntity {
     private int listValueId;
     private Integer number;
     private String value;
-    private AttributeEntity attributesByAttrId; //TODO Max Просто attribute
+    private AttributeEntity attributesByAttrId;
 
     public void setListValueId(int listValueId) {
         this.listValueId = listValueId;
@@ -42,7 +42,7 @@ public class ListValueEntity {
     }
 
     @Override
-    public boolean equals(Object o) { //TODO Max В конец
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -56,7 +56,7 @@ public class ListValueEntity {
     }
 
     @Override
-    public int hashCode() { //TODO Max В конец
+    public int hashCode() {
         int result = listValueId;
         result = 31 * result + (number != null ? number.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);

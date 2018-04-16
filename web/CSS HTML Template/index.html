@@ -261,12 +261,16 @@
                         data: msg,
                         success: function (data) {
                             drawResult(data);
+
+                            $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/csv/saveCSV',
+                                {res: JSON.stringify(data)}); //пост запрос на сохранеие CSV
                         },
                         error: function (xhr, str) {
                             alert('Возникла ошибка: ' + xhr.responseCode);
                         },
                         dataType: "json"
                     });
+
                 }
             });
         </script>

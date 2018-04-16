@@ -1,6 +1,6 @@
 package ru.vise.entities;
 
-import javax.persistence.*; //TODO Max Не используй импорт звёздочкой в диффах, не будет видно добавление нового класса
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +53,7 @@ public class AttributeEntity {
     }
 
     @Override
-    public boolean equals(Object o) { //TODO Max В конец
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -68,7 +68,7 @@ public class AttributeEntity {
     }
 
     @Override
-    public int hashCode() { //TODO Max В конец
+    public int hashCode() {
         int result = attrId;
         result = 31 * result + (attrName != null ? attrName.hashCode() : 0);
         result = 31 * result + (attrType != null ? attrType.hashCode() : 0);
@@ -76,7 +76,7 @@ public class AttributeEntity {
         return result;
     }
 
-    private Set<ListValueEntity> listValueEntities = new HashSet<ListValueEntity>(); //TODO Max В начало
+    private Set<ListValueEntity> listValueEntities = new HashSet<ListValueEntity>();
 
     @OneToMany(mappedBy = "attributesByAttrId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     public Set<ListValueEntity> getListValueEntities() {
@@ -87,7 +87,7 @@ public class AttributeEntity {
         this.listValueEntities = listValueEntities;
     }
 
-    private Set<ParamEntity> paramEntities =  new HashSet<ParamEntity>(); //TODO Max В начало
+    private Set<ParamEntity> paramEntities =  new HashSet<ParamEntity>();
 
     @OneToMany(mappedBy = "attributesByAttrId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     public Set<ParamEntity> getParamEntities() {
@@ -105,8 +105,7 @@ public class AttributeEntity {
                 ", attrName='" + attrName + '\'' +
                 ", attrType=" + attrType +
                 ", description='" + description + '\'' +
-//                ", listValueEntities=" + listValueEntities + //TODO Max Выпиливай если не нужно, а если планируешь использовать, то оставляй
-// todo с описанием того, как будешь использовать и когда планируешь сделать
+//                ", listValueEntities=" + listValueEntities +
 //                ", paramEntities=" + paramEntities +
                 '}';
     }
