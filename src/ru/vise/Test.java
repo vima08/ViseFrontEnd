@@ -7,6 +7,7 @@ import ru.vise.dao.FactoryDAO;
 import ru.vise.entities.ListValueEntity;
 import ru.vise.entities.ObjectEntity;
 import ru.vise.entities.ParamEntity;
+import ru.vise.rest.DataBase;
 import ru.vise.utils.HibernateSessionFactory;
 
 import javax.persistence.EntityManager;
@@ -93,10 +94,13 @@ public class Test {
 //            }
 //        }
 
-        String paretoDistribution = new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
-                20, 100, 10, 101,
-                0.5, -250, 100, 10));
-        System.out.println(paretoDistribution);
+//        String paretoDistribution = new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
+//                20, 100, 10, 101,
+//                0.5, -250, 100, 10));
+//        System.out.println(paretoDistribution);
 
+        DataBase dataBase = new DataBase();
+        String result = dataBase.getParamExp(String.valueOf(31));
+        System.out.println(result);
     }
 }
