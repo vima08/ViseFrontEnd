@@ -32,7 +32,6 @@ public class ViseExperiment {
                 majorityThreshold, start, finish, step, var));
         return json;
     }
-
     @GET
     @Path("/percentage")
     public String getPercentage() {
