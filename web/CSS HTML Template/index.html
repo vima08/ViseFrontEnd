@@ -308,7 +308,7 @@
 
             <div id="myDiv">
                 <!--<a href="http://google.com">Open link</a>-->
-                <!--<a href="http://info.ddw.kz/feed" target="_blank">Open link in new window</a>-->
+                <a href="http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?q=sadv" target="_blank">Open link in new window</a>
             </div>
 
 
@@ -352,18 +352,7 @@
                     }
                 }
             }
-            $('#runButton1').click(function () {
-                    move("bar1");
-            })
-            $('#runButton2').click(function () {
-                move("bar2");
-            })
-            $('#runButton3').click(function () {
-                move("bar3");
-            })
-            $('#runButton4').click(function () {
-                move("bar4");
-            })
+
         </script>
 
 
@@ -428,6 +417,9 @@
 
 
          <script>
+             var params = new Array(4);
+             var results = new Array(4);
+             var inProgress = [false, false, false, false];
              var db = false;
             $('#submitbutton').click(function() {
                 if (db) {
@@ -443,7 +435,7 @@
                             var msg = $('#formx').serialize();
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run', // Add experimentId
                                 data: msg,
                                 success: function (data) {
                                     //alert(data);
@@ -460,13 +452,16 @@
                         }
                     );
                 } else {
-                    callPercentage();
+//                    callPercentage();
                     var msg = $('#formx').serialize();
+                    msg += "&experimentId=13742357325"; // Change ID
+                    params[0] = msg;
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
                         data: msg,
                         success: function (data) {
+                            results[0] = data;
                             drawResult(data);
                         },
                         error: function (xhr, str) {
@@ -477,6 +472,48 @@
                     });
                 }
             });
+
+             $('#runButton1').click(function () {
+                 inProgress[0] = true;
+                 callPercentage("experiment1", "bar1", 1);
+                 runExperiment("experiment1", 1);
+             })
+             $('#runButton2').click(function () {
+                 inProgress[1] = true;
+                 callPercentage("experiment2", "bar2", 2);
+                 runExperiment("experiment2", 2);
+             })
+             $('#runButton3').click(function () {
+                 inProgress[2] = true;
+                 callPercentage("experiment3", "bar3", 3);
+                 runExperiment("experiment3", 3);
+             })
+             $('#runButton4').click(function () {
+                 inProgress[3] = true;
+                 callPercentage("experiment4", "bar4", 4);
+                 runExperiment("experiment4", 4);
+             })
+            $('#showResultButton1').click(function() {
+//                window.location.href='http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
+//                params[0];
+                window.open(
+                    'http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
+                    params[0],
+                    '_blank'
+                );
+//               alert(results[0]);
+//                var msg = "param=jhbhbhk";
+//                $.ajax({
+//                   type: "GET",
+//                   datatype: "json",
+//                   url: "localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html",
+//                   data: msg,
+//                    success: function
+//                });
+            });
+             $('#saveResultButton1').click(function() {
+                 alert(params[0]);
+             });
         </script>
 
         <script>
@@ -531,6 +568,54 @@
                         dataType: "json"
                     });
                 }
+            }
+            function callPercentage(experimentId, progressBarId, experimentNumber) {
+                var elem = document.getElementById(progressBarId);
+                var id = setInterval(frame, 100);
+                var reset = 0;
+                function frame() {
+                    $.ajax({
+                        type: 'GET',
+                        data: "experimentId=" + experimentId,
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/percentage',
+                        success: function(data) {
+                            elem.style.width = data * 100 + '%';
+                            if (data >= 1) reset++;
+//                            if (reset >= 5) {
+                            if (!inProgress[experimentNumber - 1]) {
+//                                elem.style.width = 1 + '%';
+                                clearInterval(id);
+                                reset = 0;
+                            }
+                            //$('#results').html(data);
+                        },
+                        error:  function(xhr, str){
+                            alert('Возникла ошибка: ' + xhr.responseCode);
+                        },
+                        dataType: "json"
+                    });
+                }
+            }
+            function runExperiment(experimentId, experimentNumber) {
+                var msg = $('#formx').serialize();
+                msg += "&experimentId=" + experimentId;
+                params[0] = msg;
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                    data: msg,
+                    success: function (data) {
+                        results[0] = data;
+                        drawResult(data);
+                        inProgress[experimentNumber - 1] = false;
+                    },
+                    error: function (xhr, str) {
+                        inProgress[experimentNumber - 1] = false;
+                        alert('Возникла ошибка: ' + xhr.responseCode);
+                        alert(msg);
+                    },
+                    dataType: "json"
+                });
             }
         </script>
 

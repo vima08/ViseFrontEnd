@@ -25,16 +25,20 @@ public class ViseExperiment {
                                     @QueryParam("start") Integer start,
                                     @QueryParam("finish") Integer finish,
                                     @QueryParam("step")Integer step,
-                                    @QueryParam("multiple") Double multiple) {
+                                    @QueryParam("multiple") Double multiple,
+                                    @QueryParam("experimentId") String experimentId) {
         // Return some cliched textual content
         String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
                 k, iteration, stepNumber, peopleCount,
-                majorityThreshold, start, finish, step, var));
+                majorityThreshold, start, finish, step, var, experimentId));
+//        String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
+//                k, iteration, stepNumber, peopleCount,
+//                majorityThreshold, start, finish, step, var));
         return json;
     }
     @GET
     @Path("/percentage")
-    public String getPercentage() {
-        return Double.toString(BackEnd.getPercentage());
+    public String getPercentage(@QueryParam("experimentId") String experimentId) {
+        return Double.toString(BackEnd.getPercentage(experimentId));
     }
 }
