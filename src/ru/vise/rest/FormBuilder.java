@@ -14,7 +14,7 @@ public class FormBuilder {
     public String BuildForm(@QueryParam("formname") String formname) {
 
 //        return new Gson().toJson(BuildMapList());
-        return readFromJson("D:\\Repository\\java vise\\ViseFrontEnd\\forms\\SimpleEgo.json");
+        return readFromJson("/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/SimpleEgo.json");
 //        return "";
     }
 

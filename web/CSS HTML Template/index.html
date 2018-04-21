@@ -262,7 +262,7 @@
 
         <script>
             $('#formSelectButton').click(function () {
-                var msg = "formFileName=D:\\Repository\\java vise\\ViseFrontEnd\\forms\\SimpleEgo.json";
+                var msg = "formFileName=/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/SimpleEgo.json";
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
@@ -278,12 +278,8 @@
                                 appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
                                     "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n" +
                                     "<i class=\"fa fa-";
-                                if (i == 0) {
-                                    appendString += "one";
-                                } else {
-                                    appendString += "two";
-                                }
-                                appendString += "-marker fa-2x tm-form-element-icon-my\"></i>\n" +
+
+                                appendString += "var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
                                     "<input name=\"" + data[i].name +
                                     "\" type=\"" + data[i].type +
                                     "\" class=\"form-control\" id=\"" + data[i].id + "\"" +
@@ -292,9 +288,10 @@
                             } else {
 //                                alert(data[i].options[1]);
                                 appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
-                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n" +
+                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n";
+                                appendString += "<i class=\"fa fa-var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
                                     "<select name=\"" + data[i].name + "\" class=\"form-control\" id=\"" + data[i].id +
-                                    "\" attr_id=\"" + data[i].attr_id + "\">\n";
+                                    "\" attr_id=\"" + data[i].attr_id + "\" value=\"0.5\" >\n";
                                 var options = data[i].options.split(",");
                                 for (var j = 0; j < options.length; j++) {
                                     appendString += "<option value=\"" + options[j] + "\">" + options[j] + "</option>\n";
@@ -450,6 +447,9 @@
         </script>
 
         <script>
+
+            var csvdata;
+
             function callPercentage() {
                 var elem = document.getElementById("myBar");
                 var id = setInterval(frame, 100);
@@ -502,6 +502,7 @@
                 }
             }
             function runExperiment(experimentId, experimentNumber) {
+
                 var msg = $('#formx').serialize();
                 msg += "&experimentId=" + experimentId;
                 params[experimentNumber - 1] = msg;
@@ -514,6 +515,8 @@
 //                        drawResult(data);
                         inProgress[experimentNumber - 1] = false;
                         activateButtons(experimentNumber);
+                        csvdata = JSON.stringify(data);
+                        csvdata = "csvdata=" + csvdata;
                     },
                     error: function (xhr, str) {
                         inProgress[experimentNumber - 1] = false;
@@ -524,6 +527,43 @@
                 });
             }
         </script>
+
+        <script type="text/javascript">
+            function saveTextAsFile()
+
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/csv/saveCSV',
+                    data: csvdata,
+                    success: function (name) {
+                        var fileNameToSaveAs = name;
+
+                        var downloadLink = document.createElement("a");
+                        downloadLink.download = fileNameToSaveAs;
+                        downloadLink.innerHTML = "Download File";
+                        downloadLink.href =  "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/Results/" + name;
+                        downloadLink.onclick = destroyClickedElement;
+                        downloadLink.style.display = "none";
+                        document.body.appendChild(downloadLink);
+
+                        downloadLink.click();
+                    },
+                    error: function (xhr, str) {
+                        alert('Возникла ошибка: ' + xhr.responseCode);
+                    },
+                    dataType: "text"
+                });
+            }
+
+            function destroyClickedElement(event)
+            {
+                document.body.removeChild(event.target);
+            }
+
+
+        </script>
+
 
         <script>
             function serialize() {

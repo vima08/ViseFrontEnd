@@ -25,6 +25,7 @@
 <script>
 
     $(document).ready(function GetUrlValue(VarSearch) {
+        alert("не работает")
         var SearchString = window.location.search.substring(1);
         var arr = SearchString.split('&');
         var result = JSON.parse(arr[0].split('=')[1]);
