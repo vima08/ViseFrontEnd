@@ -92,10 +92,10 @@
                                                 <div id="bar1"></div>
                                             </div>
                                             <div id="showResultButtonDiv1">
-                                                <button type="submit" id="showResultButton1" class="btn btn-primary tm-btn-search">Show Result</button>
+                                                <button type="submit" id="showResultButton1" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
                                             </div>
                                             <div id="saveResultButtonDiv1">
-                                                <button type="submit" id="saveResultButton1" class="btn btn-primary tm-btn-search">Save Result</button>
+                                                <button type="submit" id="saveResultButton1" disabled="true" class="btn btn-primary tm-btn-search">Save Result</button>
                                             </div>
                                         </div>
                                         <div id="buttons2">
@@ -107,10 +107,10 @@
                                                 <div id="bar2"></div>
                                             </div>
                                             <div id="showResultButtonDiv2">
-                                                <button type="submit" id="showResultButton2" class="btn btn-primary tm-btn-search">Show Result</button>
+                                                <button type="submit" id="showResultButton2" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
                                             </div>
                                             <div id="saveResultButtonDiv2">
-                                                <button type="submit" id="saveResultButton2" class="btn btn-primary tm-btn-search">Save Result</button>
+                                                <button type="submit" id="saveResultButton2" disabled="true" class="btn btn-primary tm-btn-search">Save Result</button>
                                             </div>
                                         </div>
                                         <div id="buttons3">
@@ -122,10 +122,10 @@
                                                 <div id="bar3"></div>
                                             </div>
                                             <div id="showResultButtonDiv3">
-                                                <button type="submit" id="showResultButton3" class="btn btn-primary tm-btn-search">Show Result</button>
+                                                <button type="submit" id="showResultButton3" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
                                             </div>
                                             <div id="saveResultButtonDiv3">
-                                                <button type="submit" id="saveResultButton3" class="btn btn-primary tm-btn-search">Save Result</button>
+                                                <button type="submit" id="saveResultButton3" disabled="true" class="btn btn-primary tm-btn-search">Save Result</button>
                                             </div>
                                         </div>
                                         <div id="buttons4">
@@ -137,10 +137,10 @@
                                                 <div id="bar4"></div>
                                             </div>
                                             <div id="showResultButtonDiv4">
-                                                <button type="submit" id="showResultButton4" class="btn btn-primary tm-btn-search">Show Result</button>
+                                                <button type="submit" id="showResultButton4" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
                                             </div>
                                             <div id="saveResultButtonDiv4">
-                                                <button type="submit" id="saveResultButton4" class="btn btn-primary tm-btn-search">Save Result</button>
+                                                <button type="submit" id="saveResultButton4" disabled="true" class="btn btn-primary tm-btn-search">Save Result</button>
                                             </div>
                                         </div>
                                     </div>
@@ -379,21 +379,25 @@
                  inProgress[0] = true;
                  callPercentage("experiment1", "bar1", 1);
                  runExperiment("experiment1", 1);
+                 disactivateButtons(1);
              })
              $('#runButton2').click(function () {
                  inProgress[1] = true;
                  callPercentage("experiment2", "bar2", 2);
                  runExperiment("experiment2", 2);
+                 disactivateButtons(2);
              })
              $('#runButton3').click(function () {
                  inProgress[2] = true;
                  callPercentage("experiment3", "bar3", 3);
                  runExperiment("experiment3", 3);
+                 disactivateButtons(3);
              })
              $('#runButton4').click(function () {
                  inProgress[3] = true;
                  callPercentage("experiment4", "bar4", 4);
                  runExperiment("experiment4", 4);
+                 disactivateButtons(4);
              })
              $('#showResultButton1').click(function() {
                  window.open(
@@ -435,6 +439,14 @@
              $('#saveResultButton4').click(function() {
                  alert(results[3], params[3]);
              });
+             function disactivateButtons(number) {
+                 document.getElementById('showResultButton' + number).disabled = true;
+                 document.getElementById('saveResultButton' + number).disabled = true;
+             }
+             function activateButtons(number) {
+                 document.getElementById('showResultButton' + number).disabled = false;
+                 document.getElementById('saveResultButton' + number).disabled = false;
+             }
         </script>
 
         <script>
@@ -492,15 +504,16 @@
             function runExperiment(experimentId, experimentNumber) {
                 var msg = $('#formx').serialize();
                 msg += "&experimentId=" + experimentId;
-                params[0] = msg;
+                params[experimentNumber - 1] = msg;
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
                     data: msg,
                     success: function (data) {
-                        results[0] = data;
+                        results[experimentNumber - 1] = data;
 //                        drawResult(data);
                         inProgress[experimentNumber - 1] = false;
+                        activateButtons(experimentNumber);
                     },
                     error: function (xhr, str) {
                         inProgress[experimentNumber - 1] = false;

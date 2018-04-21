@@ -41,11 +41,10 @@
                     "</tr>");
             }
         });
+        drawResult(result, map.get("var"));
     });
 
     function drawResult(data, variation) {
-//        var variation = $('#var').val();
-//        var variation = map.get("var");
         var xData = (variation === "mu") ? data.mu : data.sigma;
 
         //console.log(data);
