@@ -4,19 +4,22 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javenue.csv.Csv;
 
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
+
+import static java.lang.Thread.sleep;
 
 @Path("/csv")
 public class CSVwriter {
 
-    @POST
-    @Path("saveCSV")
-    public void saveCSV(@FormParam("res") String res) {
+    @GET
+    @Path("/saveCSV")
+    public String saveCSV(@QueryParam("data_for_csv") String res, @QueryParam("csvUrl") String url1) {
 
         Type itemsMapType = new TypeToken<Map<String, Double[]>>() {}.getType();
         Map<String, Double[]> mapData = new Gson().fromJson(res, itemsMapType);
@@ -24,8 +27,17 @@ public class CSVwriter {
         Set<String> keys = mapData.keySet();
         String[] array = keys.toArray(new String[keys.size()]);
 
+        Date date = new Date();
+
+        Long millis = date.getTime();
+
+
+        String name = "sadfczzxcsweqdfvsaqwef" + millis.toString() + ".csv";
+
+        String url = url1 + name;
+
         Csv.Writer writer;
-        writer = new Csv.Writer(String.format("/Users/maksimovvladislav/Downloads/glassfish5/glassfish/domains/domain1/applications/__internal/ViseFrontEnd_war_exploded/result.csv")).delimiter(';');
+        writer = new Csv.Writer(url).delimiter(';');
 
 
         for (int i = -1; i < mapData.get(array[0]).length; i++) {
@@ -43,6 +55,13 @@ public class CSVwriter {
         }
 
         writer.close();
+//       // try {
+//            sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return name;
+
 
     }
 }

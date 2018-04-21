@@ -241,7 +241,8 @@
         <script src="js/jquery.serializeObject.js"></script>
 
         <script>
-            var formFilesLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\forms";
+            var formFilesLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/";
+            var csvLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/"
         </script>
 
         <script>
@@ -265,7 +266,7 @@
 
         <script>
             $('#formSelectButton').click(function () {
-                var msg = "formFileName=" + formFilesLocation + "\\SimpleEgo.json";
+                var msg = "formFileName=" + formFilesLocation + "SimpleEgo.json";
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
@@ -281,12 +282,8 @@
                                 appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
                                     "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n" +
                                     "<i class=\"fa fa-";
-                                if (i == 0) {
-                                    appendString += "one";
-                                } else {
-                                    appendString += "two";
-                                }
-                                appendString += "-marker fa-2x tm-form-element-icon-my\"></i>\n" +
+
+                                appendString += "var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
                                     "<input name=\"" + data[i].name +
                                     "\" type=\"" + data[i].type +
                                     "\" class=\"form-control\" id=\"" + data[i].id + "\"" +
@@ -295,9 +292,10 @@
                             } else {
 //                                alert(data[i].options[1]);
                                 appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
-                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n" +
+                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n";
+                                appendString += "<i class=\"fa fa-var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
                                     "<select name=\"" + data[i].name + "\" class=\"form-control\" id=\"" + data[i].id +
-                                    "\" attr_id=\"" + data[i].attr_id + "\">\n";
+                                    "\" attr_id=\"" + data[i].attr_id + "\" value=\"0.5\" >\n";
                                 var options = data[i].options.split(",");
                                 for (var j = 0; j < options.length; j++) {
                                     appendString += "<option value=\"" + options[j] + "\">" + options[j] + "</option>\n";
@@ -323,6 +321,7 @@
 
 
          <script>
+             var csvdata;
              var params = new Array(4);
              var results = new Array(4);
              var inProgress = [false, false, false, false];
@@ -431,16 +430,18 @@
                  );
              });
              $('#saveResultButton1').click(function() {
-                 alert(results[0], params[0]);
+
+                 saveTextAsFile("data_for_csv=" + JSON.stringify(results[0]));
+
              });
              $('#saveResultButton2').click(function() {
-                 alert(results[1], params[1]);
+                 saveTextAsFile("data_for_csv=" + JSON.stringify(results[1]));
              });
              $('#saveResultButton3').click(function() {
-                 alert(results[2], params[2]);
+                 saveTextAsFile("data_for_csv=" + JSON.stringify(results[2]));
              });
              $('#saveResultButton4').click(function() {
-                 alert(results[3], params[3]);
+                 saveTextAsFile("data_for_csv=" + JSON.stringify(results[3]));
              });
              function disactivateButtons(number) {
                  document.getElementById('showResultButton' + number).disabled = true;
@@ -517,6 +518,7 @@
 //                        drawResult(data);
                         inProgress[experimentNumber - 1] = false;
                         activateButtons(experimentNumber);
+
                     },
                     error: function (xhr, str) {
                         inProgress[experimentNumber - 1] = false;
@@ -527,6 +529,43 @@
                 });
             }
         </script>
+
+        <script type="text/javascript">
+            function saveTextAsFile(data_for_csv)
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/csv/saveCSV',
+                    data: data_for_csv + "&csvUrl=" + csvLocation,
+                    success: function (name) {
+                        var fileNameToSaveAs = name;
+
+                        var downloadLink = document.createElement("a");
+                        downloadLink.download = fileNameToSaveAs;
+                        downloadLink.innerHTML = "Download File";
+                        downloadLink.href =  "http://localhost:8080/ViseFrontEnd_war_exploded/" + name;
+                        downloadLink.onclick = destroyClickedElement;
+                        downloadLink.style.display = "none";
+                        document.body.appendChild(downloadLink);
+
+                        downloadLink.click();
+                        alert(downloadLink.href)
+                    },
+                    error: function (xhr, str) {
+                        alert('Возникла ошибка: ' + data_for_csv);
+                    },
+                    dataType: "text"
+                });
+            }
+
+            function destroyClickedElement(event)
+            {
+                document.body.removeChild(event.target);
+            }
+
+
+        </script>
+
 
         <script>
             function serialize() {
