@@ -25,19 +25,12 @@
 <script>
 
     $(document).ready(function GetUrlValue(VarSearch) {
-        alert("1");
+
         var SearchString = window.location.search.substring(1);
-
         var arr = SearchString.split('&');
-        alert("2");
-
         var test = arr[0].split('=')[1];
         test = test.replace(/%22/g,'\"');
-//        test = test.replace("\"", '%22');
-        alert(test);
         var result = JSON.parse(test);
-        alert("3");
-
         var map = new Map();
         var elem = ["", ""];
 

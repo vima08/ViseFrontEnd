@@ -11,10 +11,10 @@ import java.util.*;
 public class FormBuilder {
     @GET
     @Path("/form")
-    public String BuildForm(@QueryParam("formname") String formname) {
+    public String BuildForm(@QueryParam("formFileName") String formFileName) {
 
 //        return new Gson().toJson(BuildMapList());
-        return readFromJson("D:\\Repository\\java vise\\ViseFrontEnd\\forms\\SimpleEgo.json");
+        return readFromJson(formFileName);
 //        return "";
     }
 

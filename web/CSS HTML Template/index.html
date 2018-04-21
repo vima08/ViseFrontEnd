@@ -240,6 +240,9 @@
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/jquery.serializeObject.js"></script>
 
+        <script>
+            var formFilesLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\forms";
+        </script>
 
         <script>
             function move(barId) {
@@ -262,7 +265,7 @@
 
         <script>
             $('#formSelectButton').click(function () {
-                var msg = "formFileName=D:\\Repository\\java vise\\ViseFrontEnd\\forms\\SimpleEgo.json";
+                var msg = "formFileName=" + formFilesLocation + "\\SimpleEgo.json";
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
