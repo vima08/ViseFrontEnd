@@ -49,9 +49,9 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
                                   </li>
-                                  <!--<li class="nav-item"> //TODO Art Выпиливай -->
-                                    <!--<a class="nav-link" href="#tm-section-4">History</a>-->
-                                  <!--</li>-->
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/search.html" target="_blank">Search</a>
+                                  </li>
                                   <!--<li class="nav-item">-->
                                     <!--<a class="nav-link" href="#tm-section-6">Contact Us</a>-->
                                   <!--</li>-->
@@ -66,135 +66,247 @@
                     <div class="container ie-h-align-center-fix">
                         <div class="row">
                             <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+
                                 <form action="javascript:void(null);" method="get" id="formx" class="tm-search-form tm-section-pad-2" onsubmit="call()">
                                     <div class="form-row tm-search-form-row">
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>
-                                            <i class="fa fa-one-marker fa-2x tm-form-element-icon-my"></i>
-                                            <!--<i class="fa fa-one-marker mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>-->
-                                            <input name="capital" type="text" class="form-control" id="initCapital"
-                                                   placeholder="Initial capital..." value="10">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Mu</i>
-                                            <i class="fa fa-two-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="mu" type="text" class="form-control" id="mu"
-                                                   placeholder="Mu..." value="0.1" attr_id="2">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Sigma</i>
-                                            <i class="fa fa-three-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="sigma" type="text" class="form-control" id="sigmaId"
-                                                   placeholder="Sigma..." value="1" attr_id="3">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> K</i>
-                                            <i class="fa fa-four-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="k" type="text" class="form-control" id="kId"
-                                                   placeholder="K..."  value="20" attr_id="4">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Step Number</i>
-                                            <i class="fa fa-five-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="stepNumber" type="text" class="form-control" id="stepNumberId"
-                                                   placeholder="Step Number..."  value="10" attr_id="5">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Iteration</i>
-                                            <i class="fa fa-six-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="iteration" type="text" class="form-control" id="iterationId"
-                                                   placeholder="Iteration..." value="100" attr_id="6">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> People Count</i>
-                                            <i class="fa fa-seven-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="peopleCount" type="text" class="form-control" id="peopleCountId"
-                                                   placeholder="People Count..." value="101" attr_id="7">
-                                        </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold (alpha)</i>
-                                            <i class="fa fa-eight-marker fa-2x tm-form-element-icon-my"></i>
-                                            <input name="majorityThreshold" type="text" class="form-control" id="majorityThresholdId"
-                                                   placeholder="Majority threshold..." value="0.5" attr_id="8">
-                                        </div>
-                                    </div>
-                                    <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Variation</i>
-                                            <select name="var" class="form-control" id="var" attr_id="9">
-                                                <!--<option value="">Var</option>-->
-                                                <option value="mu">mu</option>
-                                                <option value="sigma">sigma</option>
+                                            <select name="formSelect" class="form-control" id="formSelect">
+                                                <option value="SimpleEgo">SimpleEgo</option>
                                             </select>
-                                            <!--<i class="fa fa-var-marker fa-2x tm-form-element-icon"></i>-->
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <i class="fa mt-1 tm-font-semibold tm-color-primary"> Distribution</i>
-                                            <select name="distrib" class="form-control" id="distrib" attr_id="10" title="Distribution">
-                                                <option value="ParetoDistribution">Pareto</option>
-                                                <option value="NormalDistribution">Normal</option>
-                                                <!--<option value="ParetoDistribution">ContinForm</option>-->
-                                            </select>
-                                            <!--<i class="fa fa-distrib-marker fa-2x tm-form-element-icon"></i>-->
+                                            <button id="formSelectButton" class="btn btn-primary tm-btn-search">Select form</button>
                                         </div>
                                     </div>
-                                        <div class="form-row tm-search-form-row">
-                                            <div class="form-group tm-form-element tm-form-element-100">
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Start</i>
-                                                <i class="fa fa-start-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="start" id="start" type="text" class="form-control"
-                                                       placeholder="Start" value="-250" attr_id="11">
-                                            </div>
-                                            <div class="form-group tm-form-element tm-form-element-100">
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Finish</i>
-                                                <i class="fa fa-finish-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="finish" id="finish" type="text" class="form-control"
-                                                       placeholder="Finish" value="100" attr_id="12">
-                                            </div>
-                                            <div class="form-group tm-form-element tm-form-element-100">
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Step</i>
-                                                <i class="fa fa-step-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="step" id="step" type="text" class="form-control"
-                                                       placeholder="Step"  value="10" attr_id="13">
-                                            </div>
-                                        </div>
-                                        <div class="form-row tm-search-form-row">
-                                            <div class="form-group tm-form-element tm-form-element-100">
-                                                <i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>
-                                                <i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>
-                                                <input name="multiple" id="multiple" type="text" class="form-control"
-                                                       placeholder="Multiple">
-                                            </div>
-                                        </div>
-
+                                    <div class="form-row tm-search-form-row" id="inputsdiv">
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Initial capital</i>-->
+                                            <!--<i class="fa fa-one-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="capital" type="text" class="form-control" id="initCapital"-->
+                                                   <!--placeholder="Initial capital..." value="10">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Mu</i>-->
+                                            <!--<i class="fa fa-two-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="mu" type="text" class="form-control" id="mu"-->
+                                                   <!--placeholder="Mu..." value="0.1" attr_id="2">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Sigma</i>-->
+                                            <!--<i class="fa fa-three-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="sigma" type="text" class="form-control" id="sigmaId"-->
+                                                   <!--placeholder="Sigma..." value="1" attr_id="3">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> K</i>-->
+                                            <!--<i class="fa fa-four-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="k" type="text" class="form-control" id="kId"-->
+                                                   <!--placeholder="K..."  value="20" attr_id="4">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Step Number</i>-->
+                                            <!--<i class="fa fa-five-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="stepNumber" type="text" class="form-control" id="stepNumberId"-->
+                                                   <!--placeholder="Step Number..."  value="10" attr_id="5">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Iteration</i>-->
+                                            <!--<i class="fa fa-six-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="iteration" type="text" class="form-control" id="iterationId"-->
+                                                   <!--placeholder="Iteration..." value="100" attr_id="6">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> People Count</i>-->
+                                            <!--<i class="fa fa-seven-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="peopleCount" type="text" class="form-control" id="peopleCountId"-->
+                                                   <!--placeholder="People Count..." value="101" attr_id="7">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Majority threshold (alpha)</i>-->
+                                            <!--<i class="fa fa-eight-marker fa-2x tm-form-element-icon-my"></i>-->
+                                            <!--<input name="majorityThreshold" type="text" class="form-control" id="majorityThresholdId"-->
+                                                   <!--placeholder="Majority threshold..." value="0.5" attr_id="8">-->
+                                        <!--</div>-->
+                                    </div>
+                                    <!--<div class="form-row tm-search-form-row">-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-2">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Variation</i>-->
+                                            <!--<select name="var" class="form-control" id="var" attr_id="9">-->
+                                                <!--<option value="mu">mu</option>-->
+                                                <!--<option value="sigma">sigma</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group tm-form-element tm-form-element-2">-->
+                                            <!--<i class="fa mt-1 tm-font-semibold tm-color-primary"> Distribution</i>-->
+                                            <!--<select name="distrib" class="form-control" id="distrib" attr_id="10" title="Distribution">-->
+                                                <!--<option value="ParetoDistribution">Pareto</option>-->
+                                                <!--<option value="NormalDistribution">Normal</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                        <!--<div class="form-row tm-search-form-row">-->
+                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Start</i>-->
+                                                <!--<i class="fa fa-start-marker fa-2x tm-form-element-icon-my"></i>-->
+                                                <!--<input name="start" id="start" type="text" class="form-control"-->
+                                                       <!--placeholder="Start" value="-250" attr_id="11">-->
+                                            <!--</div>-->
+                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Finish</i>-->
+                                                <!--<i class="fa fa-finish-marker fa-2x tm-form-element-icon-my"></i>-->
+                                                <!--<input name="finish" id="finish" type="text" class="form-control"-->
+                                                       <!--placeholder="Finish" value="100" attr_id="12">-->
+                                            <!--</div>-->
+                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Step</i>-->
+                                                <!--<i class="fa fa-step-marker fa-2x tm-form-element-icon-my"></i>-->
+                                                <!--<input name="step" id="step" type="text" class="form-control"-->
+                                                       <!--placeholder="Step"  value="10" attr_id="13">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-row tm-search-form-row">-->
+                                            <!--<div class="form-group tm-form-element tm-form-element-100">-->
+                                                <!--<i class="fa mt-1 tm-font-semibold tm-color-primary">Multiple</i>-->
+                                                <!--<i class="fa fa-multiple-marker fa-2x tm-form-element-icon-my"></i>-->
+                                                <!--<input name="multiple" id="multiple" type="text" class="form-control"-->
+                                                       <!--placeholder="Multiple">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
                                     <div class="form-group tm-form-element tm-form-element-2">
                                         <button type="submit" id="submitbutton" class="btn btn-primary tm-btn-search">Start Experiment</button>
                                     </div>
-
+                                    <div>
+                                        <div id="buttons1">
+                                            <!--<div class="form-row tm-search-form-row" id="buttons">-->
+                                            <div id="runButtonDiv1">
+                                                <button type="submit" id="runButton1" class="btn btn-primary tm-btn-search">Run</button>
+                                            </div>
+                                            <div id="progress1">
+                                                <div id="bar1"></div>
+                                            </div>
+                                            <div id="showResultButtonDiv1">
+                                                <button type="submit" id="showResultButton1" class="btn btn-primary tm-btn-search">Show Result</button>
+                                            </div>
+                                            <div id="saveResultButtonDiv1">
+                                                <button type="submit" id="saveResultButton1" class="btn btn-primary tm-btn-search">Save Result</button>
+                                            </div>
+                                        </div>
+                                        <div id="buttons2">
+                                            <!--<div class="form-row tm-search-form-row" id="buttons">-->
+                                            <div id="runButtonDiv2">
+                                                <button type="submit" id="runButton2" class="btn btn-primary tm-btn-search">Run</button>
+                                            </div>
+                                            <div id="progress2">
+                                                <div id="bar2"></div>
+                                            </div>
+                                            <div id="showResultButtonDiv2">
+                                                <button type="submit" id="showResultButton2" class="btn btn-primary tm-btn-search">Show Result</button>
+                                            </div>
+                                            <div id="saveResultButtonDiv2">
+                                                <button type="submit" id="saveResultButton2" class="btn btn-primary tm-btn-search">Save Result</button>
+                                            </div>
+                                        </div>
+                                        <div id="buttons3">
+                                            <!--<div class="form-row tm-search-form-row" id="buttons">-->
+                                            <div id="runButtonDiv3">
+                                                <button type="submit" id="runButton3" class="btn btn-primary tm-btn-search">Run</button>
+                                            </div>
+                                            <div id="progress3">
+                                                <div id="bar3"></div>
+                                            </div>
+                                            <div id="showResultButtonDiv3">
+                                                <button type="submit" id="showResultButton3" class="btn btn-primary tm-btn-search">Show Result</button>
+                                            </div>
+                                            <div id="saveResultButtonDiv3">
+                                                <button type="submit" id="saveResultButton3" class="btn btn-primary tm-btn-search">Save Result</button>
+                                            </div>
+                                        </div>
+                                        <div id="buttons4">
+                                            <!--<div class="form-row tm-search-form-row" id="buttons">-->
+                                            <div id="runButtonDiv4">
+                                                <button type="submit" id="runButton4" class="btn btn-primary tm-btn-search">Run</button>
+                                            </div>
+                                            <div id="progress4">
+                                                <div id="bar4"></div>
+                                            </div>
+                                            <div id="showResultButtonDiv4">
+                                                <button type="submit" id="showResultButton4" class="btn btn-primary tm-btn-search">Show Result</button>
+                                            </div>
+                                            <div id="saveResultButtonDiv4">
+                                                <button type="submit" id="saveResultButton4" class="btn btn-primary tm-btn-search">Save Result</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <style>
+                :root {
+                    --step: 5%;
+                    --button-width: 15%;
+                    --runButton-left: 0%;
+                    --progressBar-width: 40%;
+                    --progressBar-height: 40px;
+                    --progressBar-left: 20%;
+                    --showResultButton-left:65%;
+                    --saveResultButton-left: 85%;
+                }
                 #myProgress {
                     width: 100%;
                     background-color: #ddd;
                 }
-
                 #myBar {
+                    /*position: absolute;*/
                     width: 1%;
                     height: 30px;
                     background-color: #4CAF50;
                 }
+                #buttons1, #buttons2, #buttons3, #buttons4 {
+                    position: relative;
+                    height:60px;
+                    /*background-color: #7a95dd;*/
+                }
+                #runButtonDiv1, #runButtonDiv2, #runButtonDiv3, #runButtonDiv4 {
+                      position: absolute;
+                      left: var(--runButton-left);
+                      width: var(--button-width);
+                }
+                #progress1, #progress2, #progress3, #progress4 {
+                    position: absolute;
+                    height: var(--progressBar-height);
+                    left: var(--progressBar-left);
+                    width: var(--progressBar-width);
+                    background-color: #ddd;
+                }
+                #bar1, #bar2, #bar3, #bar4 {
+                    /*position: absolute;*/
+                    width: 1%;
+                    height: var(--progressBar-height);
+                    background-color: #4CAF50;
+                }
+                #showResultButtonDiv1, #showResultButtonDiv2, #showResultButtonDiv3, #showResultButtonDiv4 {
+                    position: absolute;
+                    left: var(--showResultButton-left);
+                    width: var(--button-width);
+                }
+                #saveResultButtonDiv1, #saveResultButtonDiv2, #saveResultButtonDiv3, #saveResultButtonDiv4 {
+                    position: absolute;
+                    left: var(--saveResultButton-left);
+                    width: var(--button-width);
+                }
             </style>
 
-            <div id="myProgress">
-                <div id="myBar"></div>
+
+            <div id="myDiv">
+                <!--<a href="http://google.com">Open link</a>-->
+                <!--<a href="http://info.ddw.kz/feed" target="_blank">Open link in new window</a>-->
             </div>
 
-            <div id="myDiv"></div>
+
 
             <footer class="tm-bg-dark-blue">
                 <div class="container">
@@ -219,62 +331,186 @@
         <!--<script src="js/button.js"></script>-->
         <script src="js/jquery-3.3.1.js"></script>
         <script src="js/jquery.serializeObject.js"></script>
-        <script src="js/main.js"></script>
 
-         <!--<script>-->
-             <!--var db = false;-->
-            <!--$('#submitbutton').click(function() {-->
-                <!--if (db) {-->
 
-                    <!--var a = serialize();-->
-                    <!--console.log(a);-->
-                    <!--$.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',-->
-                        <!--function onAjaxSuccess(objId) {-->
+        <script>
+            function move(barId) {
+                var elem = document.getElementById(barId);
+                var width = 1;
+                var id = setInterval(frame, 10);
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                    } else {
+                        width++;
+                        elem.style.width = width + '%';
+                    }
+                }
+            }
 
-                            <!--$.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',-->
-                                <!--{data: JSON.stringify(a), objId: objId});-->
-                            <!--callPercentage();-->
-                            <!--var msg = $('#formx').serialize();-->
-                            <!--$.ajax({-->
-                                <!--type: 'GET',-->
-                                <!--url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',-->
-                                <!--data: msg,-->
-                                <!--success: function (data) {-->
-                                    <!--//alert(data);-->
-                                    <!--drawResult(data);-->
+        </script>
 
-                                    <!--$.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',-->
-                                        <!--{result: JSON.stringify(data), objId: objId});-->
-                                <!--},-->
-                                <!--error: function (xhr, str) {-->
-                                    <!--alert('Возникла ошибка: ' + xhr.responseCode);-->
-                                <!--},-->
-                                <!--dataType: "json"-->
-                            <!--});-->
-                        <!--}-->
-                    <!--);-->
-                <!--} else {-->
-                    <!--callPercentage();-->
-                    <!--var msg = $('#formx').serialize();-->
-                    <!--$.ajax({-->
-                        <!--type: 'GET',-->
-                        <!--url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',-->
-                        <!--data: msg,-->
-                        <!--success: function (data) {-->
-                            <!--drawResult(data);-->
 
-                            <!--$.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/csv/saveCSV',-->
-                                <!--{res: JSON.stringify(data)}); //пост запрос на сохранеие CSV-->
-                        <!--},-->
-                        <!--error: function (xhr, str) {-->
-                            <!--alert('Возникла ошибка: ' + xhr.responseCode);-->
-                        <!--},-->
-                        <!--dataType: "json"-->
-                    <!--});-->
 
-                <!--}-->
-            <!--});-->
-        <!--</script>-->
+        <script>
+            $('#formSelectButton').click(function () {
+                var msg = "formFileName=/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/SimpleEgo.json";
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
+                    data: msg,
+                    success: function(data) {
+                        $('#inputsdiv').empty();
+                        var i;
+                        var appendString;
+//                        alert(data);
+                        for (i = 0; i < data.length; i++) {
+                            appendString = "";
+                            if (data[i].inputType != "select") {
+                                appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
+                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n" +
+                                    "<i class=\"fa fa-";
+
+                                appendString += "var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
+                                    "<input name=\"" + data[i].name +
+                                    "\" type=\"" + data[i].type +
+                                    "\" class=\"form-control\" id=\"" + data[i].id + "\"" +
+                                    "placeholder=\"" + data[i].placeholder + "\" value=\"" + data[i].value + "\">\n" +
+                                    "</div>";
+                            } else {
+//                                alert(data[i].options[1]);
+                                appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
+                                    "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n";
+                                appendString += "<i class=\"fa fa-var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
+                                    "<select name=\"" + data[i].name + "\" class=\"form-control\" id=\"" + data[i].id +
+                                    "\" attr_id=\"" + data[i].attr_id + "\" value=\"0.5\" >\n";
+                                var options = data[i].options.split(",");
+                                for (var j = 0; j < options.length; j++) {
+                                    appendString += "<option value=\"" + options[j] + "\">" + options[j] + "</option>\n";
+                                }
+                                appendString += "</select>\n" + "</div>";
+//                                alert(appendString);
+                            }
+                            $('#inputsdiv').append(appendString);
+                        }
+
+                    },
+                    error: function(xhr, str){
+                        alert('Возникла ошибка (form builder): ' + xhr.responseCode);
+                    },
+                    dataType: "json"
+                })
+
+            })
+            $('#removebutton').click(function () {
+                $('#inputsdiv').empty();
+            })
+        </script>
+
+
+         <script>
+             var params = new Array(4);
+             var results = new Array(4);
+             var inProgress = [false, false, false, false];
+             var db = false;
+            $('#submitbutton').click(function() {
+                if (db) {
+
+                    var a = serialize();
+                    console.log(a); //TODO Art http://localhost:8080/ViseFrontEnd_war_exploded - вынести в константу
+                    $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
+                        function onAjaxSuccess(objId) {
+
+                            $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',
+                                {data: JSON.stringify(a), objId: objId});
+                            callPercentage();
+                            var msg = $('#formx').serialize();
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run', // Add experimentId
+                                data: msg,
+                                success: function (data) {
+                                    //alert(data);
+                                    drawResult(data);
+
+                                    $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',
+                                        {result: JSON.stringify(data), objId: objId});
+                                },
+                                error: function (xhr, str) {
+                                    alert('Возникла ошибка: ' + xhr.responseCode);
+                                },
+                                dataType: "json"
+                            });
+                        }
+                    );
+                } else {
+//                    callPercentage();
+                    var msg = $('#formx').serialize();
+                    msg += "&experimentId=13742357325"; // Change ID
+                    params[0] = msg;
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                        data: msg,
+                        success: function (data) {
+                            results[0] = data;
+                            csvdata = JSON.stringify(data);
+                            csvdata = "csvdata=" + csvdata;
+                            drawResult(data);
+                        },
+                        error: function (xhr, str) {
+                            alert('Возникла ошибка: ' + xhr.responseCode);
+                            alert(msg);
+                        },
+                        dataType: "json"
+                    });
+
+                }
+            });
+
+             $('#runButton1').click(function () {
+                 inProgress[0] = true;
+                 callPercentage("experiment1", "bar1", 1);
+                 runExperiment("experiment1", 1);
+             })
+             $('#runButton2').click(function () {
+                 inProgress[1] = true;
+                 callPercentage("experiment2", "bar2", 2);
+                 runExperiment("experiment2", 2);
+             })
+             $('#runButton3').click(function () {
+                 inProgress[2] = true;
+                 callPercentage("experiment3", "bar3", 3);
+                 runExperiment("experiment3", 3);
+             })
+             $('#runButton4').click(function () {
+                 inProgress[3] = true;
+                 callPercentage("experiment4", "bar4", 4);
+                 runExperiment("experiment4", 4);
+             })
+            $('#showResultButton1').click(function() {
+//                window.location.href='http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
+//                params[0];
+                window.open(
+                    'http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
+                    params[0],
+                    '_blank'
+                );
+//               alert(results[0]);
+//                var msg = "param=jhbhbhk";
+//                $.ajax({
+//                   type: "GET",
+//                   datatype: "json",
+//                   url: "localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html",
+//                   data: msg,
+//                    success: function
+//                });
+            });
+             $('#saveResultButton1').click(function() {
+                 alert(params[0]);
+             });
+        </script>
+
 
         <script>
             function drawResult(data) {
@@ -329,6 +565,54 @@
                     });
                 }
             }
+            function callPercentage(experimentId, progressBarId, experimentNumber) {
+                var elem = document.getElementById(progressBarId);
+                var id = setInterval(frame, 100);
+                var reset = 0;
+                function frame() {
+                    $.ajax({
+                        type: 'GET',
+                        data: "experimentId=" + experimentId,
+                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/percentage',
+                        success: function(data) {
+                            elem.style.width = data * 100 + '%';
+                            if (data >= 1) reset++;
+//                            if (reset >= 5) {
+                            if (!inProgress[experimentNumber - 1]) {
+//                                elem.style.width = 1 + '%';
+                                clearInterval(id);
+                                reset = 0;
+                            }
+                            //$('#results').html(data);
+                        },
+                        error:  function(xhr, str){
+                            alert('Возникла ошибка: ' + xhr.responseCode);
+                        },
+                        dataType: "json"
+                    });
+                }
+            }
+            function runExperiment(experimentId, experimentNumber) {
+                var msg = $('#formx').serialize();
+                msg += "&experimentId=" + experimentId;
+                params[0] = msg;
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
+                    data: msg,
+                    success: function (data) {
+                        results[0] = data;
+                        drawResult(data);
+                        inProgress[experimentNumber - 1] = false;
+                    },
+                    error: function (xhr, str) {
+                        inProgress[experimentNumber - 1] = false;
+                        alert('Возникла ошибка: ' + xhr.responseCode);
+                        alert(msg);
+                    },
+                    dataType: "json"
+                });
+            }
         </script>
 
         <script>
@@ -340,6 +624,8 @@
                 return data;
             }
         </script>
+
+
     </body>
 </html>
 

@@ -1,3 +1,4 @@
+//TODO Vlad Надо выпиливать ненужные страницы, чтобы они не перемешивались с шаблоном
 <%--
   Created by IntelliJ IDEA.
   User: scholar

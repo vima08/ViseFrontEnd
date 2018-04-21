@@ -1,3 +1,6 @@
+//TODO Max Этот класс надо выпилить, но здесь должны появиться твои классы по работе с базой, которые ты будешь
+//TODO добавлять (inject) в рестовые сервисы, не надо прямо на месте использовать hibernate
+
 package ru.vise.managers;
 
 import org.hibernate.HibernateException;
