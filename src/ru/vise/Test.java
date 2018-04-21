@@ -1,22 +1,9 @@
 package ru.vise;
 
-import altr.BackEnd;
-import com.google.gson.Gson;
-import org.hibernate.Session;
-import ru.vise.dao.FactoryDAO;
-import ru.vise.entities.ListValueEntity;
-import ru.vise.entities.ObjectEntity;
-import ru.vise.entities.ParamEntity;
+import org.springframework.stereotype.Component;
 import ru.vise.rest.DataBase;
-import ru.vise.utils.HibernateSessionFactory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.swing.*;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
+@Component
 public class Test {
     public static void main(String[] args) {
 //        ObjectEntity objectEntity = new ObjectEntity();
