@@ -496,9 +496,14 @@
             $('#showResultButton1').click(function() {
 //                window.location.href='http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
 //                params[0];
+//                window.open(
+//                    'http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
+//                    params[0] + '&result=' + results[0],
+//                    '_blank'
+//                );
                 window.open(
                     'http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
-                    params[0],
+                    'result=' + JSON.stringify(results[0]) + '&' + params[0],
                     '_blank'
                 );
 //               alert(results[0]);

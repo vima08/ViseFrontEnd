@@ -16,6 +16,7 @@ public class ViseApplication extends Application {
         h.add( HelloWorld.class );
         h.add( ViseExperiment.class );
         h.add( DataBase.class );
+        h.add( CSVwriter.class);
         h.add( FormBuilder.class );
         return h;
     }

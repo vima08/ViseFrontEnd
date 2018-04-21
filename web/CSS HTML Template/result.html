@@ -7,6 +7,13 @@
 <body>
 
 <div id="myDiv"></div>
+<table id="paramsTable" border="1" width="100%" cellpadding="5">
+    <tr>
+        <th>Parameter Name</th>
+        <th>Parameter Value</th>
+    </tr>
+</table>
+
 
 <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
 <script src="js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->
@@ -16,28 +23,29 @@
 <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
 <script src="js/plotly-latest.min.js"></script>
 <script>
-//    $(document).ready(function() {
-//
-////        q = request.GET.get('q');
-//        alert("q");
-////       drawResult(q);
-//    });
 
     $(document).ready(function GetUrlValue(VarSearch) {
         var SearchString = window.location.search.substring(1);
-        alert(SearchString);
-//        var arr = SearchString.split('&');
-//        alert(arr);
-//        console.log(arr);
-//        //Set session variables
-//        var username = arr[1].split('=')[1];
-//        var password = arr[2].split('=')[1];
-//        document.getElementById('username').value = username;
-//        document.getElementById('password').value = password;
+        var arr = SearchString.split('&');
+        var result = JSON.parse(arr[0].split('=')[1]);
+        var map = new Map();
+        var elem = ["", ""];
+
+        arr.forEach(function (item, i, arr) {
+            if (i > 0) {
+                elem = item.split('=');
+                map.set(elem[0], elem[1]);
+                $('#paramsTable').append("<tr>\n" +
+                    "<td>" + elem[0] + "</td>\n" +
+                    "<td>" + elem[1] + "</td>\n" +
+                    "</tr>");
+            }
+        });
     });
 
-    function drawResult(data) {
-        var variation = $('#var').val();
+    function drawResult(data, variation) {
+//        var variation = $('#var').val();
+//        var variation = map.get("var");
         var xData = (variation === "mu") ? data.mu : data.sigma;
 
         //console.log(data);

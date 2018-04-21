@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "object", schema = "vise")
 public class ObjectEntity implements Serializable{
-    private int objectId;
+    private Long objectId;
     private String name;
     private String description;
     private ObjectEntity objectsByParentId;
@@ -16,11 +16,11 @@ public class ObjectEntity implements Serializable{
     @Id
     @Column(name = "object_id", nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int getObjectId() {
+    public Long getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(int objectId) {
+    public void setObjectId(Long objectId) {
         this.objectId = objectId;
     }
 
@@ -60,10 +60,10 @@ public class ObjectEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = objectId;
+        Long result = objectId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+        return result.intValue();
     }
 
     @ManyToOne

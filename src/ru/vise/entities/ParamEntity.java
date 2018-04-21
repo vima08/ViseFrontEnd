@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "param", schema = "vise")
 public class ParamEntity implements Serializable{
-    private int paramId;
+    private Long paramId;
     private String value;
     private ObjectEntity objectsByObjectId;
     private AttributeEntity attributesByAttrId;
@@ -14,11 +14,11 @@ public class ParamEntity implements Serializable{
     @Id
     @Column(name = "param_id", nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int getParamId() {
+    public Long getParamId() {
         return paramId;
     }
 
-    public void setParamId(int paramId) {
+    public void setParamId(Long paramId) {
         this.paramId = paramId;
     }
 
@@ -47,9 +47,9 @@ public class ParamEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = paramId;
+        Long result = paramId;
         result = 31 * result + (value != null ? value.hashCode() : 0);
-        return result;
+        return result.intValue();
     }
 
     @ManyToOne

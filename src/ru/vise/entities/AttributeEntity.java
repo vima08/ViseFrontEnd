@@ -7,18 +7,18 @@ import java.util.Set;
 @Entity
 @Table(name = "attribute", schema = "vise")
 public class AttributeEntity {
-    private int attrId;
+    private Long attrId;
     private String attrName;
     private Integer attrType;
     private String description;
 
     @Id
     @Column(name = "attr_id", nullable = false)
-    public int getAttrId() {
+    public Long getAttrId() {
         return attrId;
     }
 
-    public void setAttrId(int attrId) {
+    public void setAttrId(Long attrId) {
         this.attrId = attrId;
     }
 
@@ -69,11 +69,11 @@ public class AttributeEntity {
 
     @Override
     public int hashCode() {
-        int result = attrId;
+        Long result = attrId;
         result = 31 * result + (attrName != null ? attrName.hashCode() : 0);
         result = 31 * result + (attrType != null ? attrType.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+        return result.intValue();
     }
 
     private Set<ListValueEntity> listValueEntities = new HashSet<ListValueEntity>();
