@@ -47,11 +47,11 @@
                             <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
                                 <ul class="navbar-nav ml-auto">
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/index.html">Home <span class="sr-only">(current)</span></a>
                                   </li>
-                                  <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" href="#tm-section-4">History</a>-->
-                                  <!--</li>-->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/search.html" target="_blank">Search</a>
+                                    </li>
                                   <!--<li class="nav-item">-->
                                     <!--<a class="nav-link" href="#tm-section-6">Contact Us</a>-->
                                   <!--</li>-->
@@ -240,9 +240,7 @@
 
 
 
-            <div id="myProgress">
-                <div id="myBar"></div>
-            </div>
+
             <div id="myDiv"></div>
 
 
@@ -251,9 +249,9 @@
                 <div class="container">
                     <div class="row">
                         <p class="col-sm-12 text-center tm-font-light tm-color-white p-4 tm-margin-b-0">
-                        Copyright &copy; <span class="tm-current-year">2018</span> Your Company
+                            Copyright &copy; <span class="tm-current-year">2018</span> Vise
 
-                        - Designed by <a href="http://www.tooplate.com" class="tm-color-primary tm-font-normal" target="_parent">Tooplate</a></p>
+                        </p>
                     </div>
                 </div>
             </footer>
@@ -272,8 +270,8 @@
         <script src="js/jquery.serializeObject.js"></script>
 
         <script>
-            var formFilesLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\forms\\";
-            var csvLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\out\\artifacts\\ViseFrontEnd_war_exploded\\";
+            var formFilesLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/";
+            var csvLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/";
             //            var formFilesLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/";
             //            var csvLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/";
         </script>
@@ -350,62 +348,11 @@
         </script>
 
          <script>
-             var csvdata;
+
              var params = new Array(4);
              var results = new Array(4);
              var inProgress = [false, false, false, false];
-             var db = false;
-            $('#submitbutton').click(function() {
-                if (db) {
 
-                    var a = serialize();
-                    console.log(a);
-                    $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
-                        function onAjaxSuccess(objId) {
-
-                            $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',
-                                {data: JSON.stringify(a), objId: objId});
-                            callPercentage();
-                            var msg = $('#formx').serialize();
-                            $.ajax({
-                                type: 'GET',
-                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run', // Add experimentId
-                                data: msg,
-                                success: function (data) {
-                                    //alert(data);
-                                    drawResult(data);
-
-                                    $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',
-                                        {result: JSON.stringify(data), objId: objId});
-                                },
-                                error: function (xhr, str) {
-                                    alert('Возникла ошибка: ' + xhr.responseCode);
-                                },
-                                dataType: "json"
-                            });
-                        }
-                    );
-                } else {
-//                    callPercentage();
-                    var msg = $('#formx').serialize();
-                    msg += "&experimentId=13742357325"; // Change ID
-                    params[0] = msg;
-                    $.ajax({
-                        type: 'GET',
-                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
-                        data: msg,
-                        success: function (data) {
-                            results[0] = data;
-                            drawResult(data);
-                        },
-                        error: function (xhr, str) {
-                            alert('Возникла ошибка: ' + xhr.responseCode);
-                            alert(msg);
-                        },
-                        dataType: "json"
-                    });
-                }
-            });
              $('#runButton1').click(function () {
                  inProgress[0] = true;
                  callPercentage("experiment1", "bar1", 1);
