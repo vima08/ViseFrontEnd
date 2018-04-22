@@ -89,7 +89,10 @@
                                                 <button type="submit" id="runButton1" class="btn btn-primary tm-btn-search">Run</button>
                                             </div>
                                             <div id="progress1">
-                                                <div id="bar1"></div>
+
+                                                <div id="bar1">
+                                                    <div id="barPercent1">0%</div>
+                                                </div>
                                             </div>
                                             <div id="showResultButtonDiv1">
                                                 <button type="submit" id="showResultButton1" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
@@ -104,7 +107,9 @@
                                                 <button type="submit" id="runButton2" class="btn btn-primary tm-btn-search">Run</button>
                                             </div>
                                             <div id="progress2">
-                                                <div id="bar2"></div>
+                                                <div id="bar2">
+                                                    <div id="barPercent2">0%</div>
+                                                </div>
                                             </div>
                                             <div id="showResultButtonDiv2">
                                                 <button type="submit" id="showResultButton2" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
@@ -119,7 +124,9 @@
                                                 <button type="submit" id="runButton3" class="btn btn-primary tm-btn-search">Run</button>
                                             </div>
                                             <div id="progress3">
-                                                <div id="bar3"></div>
+                                                <div id="bar3">
+                                                    <div id="barPercent3">0%</div>
+                                                </div>
                                             </div>
                                             <div id="showResultButtonDiv3">
                                                 <button type="submit" id="showResultButton3" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
@@ -134,7 +141,9 @@
                                                 <button type="submit" id="runButton4" class="btn btn-primary tm-btn-search">Run</button>
                                             </div>
                                             <div id="progress4">
-                                                <div id="bar4"></div>
+                                                <div id="bar4">
+                                                    <div id="barPercent4">0%</div>
+                                                </div>
                                             </div>
                                             <div id="showResultButtonDiv4">
                                                 <button type="submit" id="showResultButton4" disabled="true" class="btn btn-primary tm-btn-search">Show Result</button>
@@ -166,34 +175,56 @@
                     width: 100%;
                     background-color: #ddd;
                 }
+
                 #myBar {
                     /*position: absolute;*/
                     width: 1%;
                     height: 30px;
                     background-color: #4CAF50;
                 }
+
                 #buttons1, #buttons2, #buttons3, #buttons4 {
                     position: relative;
-                    height:60px;
+                    height: 60px;
                     /*background-color: #7a95dd;*/
                 }
+
                 #runButtonDiv1, #runButtonDiv2, #runButtonDiv3, #runButtonDiv4 {
-                      position: absolute;
-                      left: var(--runButton-left);
-                      width: var(--button-width);
+                    position: absolute;
+                    left: var(--runButton-left);
+                    width: var(--button-width);
                 }
+
                 #progress1, #progress2, #progress3, #progress4 {
                     position: absolute;
                     height: var(--progressBar-height);
                     left: var(--progressBar-left);
                     width: var(--progressBar-width);
                     background-color: #ddd;
+                    text-align: center;
+                    line-height: 30px;
+                    color: white;
                 }
+
                 #bar1, #bar2, #bar3, #bar4 {
                     /*position: absolute;*/
                     width: 1%;
                     height: var(--progressBar-height);
+                    text-align: center;
+                    line-height: 30px;
+                    color: white;
                     background-color: #4CAF50;
+                }
+                #barPercent, #barPercent1, #barPercent2, #barPercent3, #barPercent4 {
+                    position: absolute;
+                    left: 0%;
+                    /*width: var(--progressBar-width);*/
+                    width: 100%;
+                    height: var(--progressBar-height);
+                    text-align: center;
+                    line-height: 35px;
+                    color: black;
+                    /*background-color: #0002af;*/
                 }
                 #showResultButtonDiv1, #showResultButtonDiv2, #showResultButtonDiv3, #showResultButtonDiv4 {
                     position: absolute;
@@ -241,8 +272,10 @@
         <script src="js/jquery.serializeObject.js"></script>
 
         <script>
-            var formFilesLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/";
-            var csvLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/"
+            var formFilesLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\forms\\";
+            var csvLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\out\\artifacts\\ViseFrontEnd_war_exploded\\";
+            //            var formFilesLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/forms/";
+            //            var csvLocation = "/Users/maksimovvladislav/IdeaProjects/ViseFrontEnd/out/artifacts/ViseFrontEnd_war_exploded/";
         </script>
 
         <script>
@@ -259,10 +292,7 @@
                     }
                 }
             }
-
         </script>
-
-
 
         <script>
             $('#formSelectButton').click(function () {
@@ -318,7 +348,6 @@
                 $('#inputsdiv').empty();
             })
         </script>
-
 
          <script>
              var csvdata;
@@ -489,6 +518,9 @@
                         url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/percentage',
                         success: function(data) {
                             elem.style.width = data * 100 + '%';
+//                            elem.innerHTML = Math.round(data * 100) + '%';
+                            elem.innerHTML = "<div id=\"barPercent\">" + Math.round(data * 100) + '%' + "</div>";
+
                             if (data >= 1) reset++;
 //                            if (reset >= 5) {
                             if (!inProgress[experimentNumber - 1]) {
@@ -549,7 +581,6 @@
                         document.body.appendChild(downloadLink);
 
                         downloadLink.click();
-
                     },
                     error: function (xhr, str) {
                         alert('Возникла ошибка: ' + data_for_csv);
