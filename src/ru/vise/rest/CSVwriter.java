@@ -32,7 +32,7 @@ public class CSVwriter {
         Long millis = date.getTime();
 
 
-        String name = "sadfczzxcsweqdfvsaqwef" + millis.toString() + ".csv";
+        String name = "result_" + millis.toString() + ".csv";
 
         String url = url1 + name;
 
