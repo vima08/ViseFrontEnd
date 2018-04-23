@@ -171,30 +171,16 @@
                     --showResultButton-left:65%;
                     --saveResultButton-left: 85%;
                 }
-                #myProgress {
-                    width: 100%;
-                    background-color: #ddd;
-                }
-
-                #myBar {
-                    /*position: absolute;*/
-                    width: 1%;
-                    height: 30px;
-                    background-color: #4CAF50;
-                }
-
                 #buttons1, #buttons2, #buttons3, #buttons4 {
                     position: relative;
                     height: 60px;
                     /*background-color: #7a95dd;*/
                 }
-
                 #runButtonDiv1, #runButtonDiv2, #runButtonDiv3, #runButtonDiv4 {
                     position: absolute;
                     left: var(--runButton-left);
                     width: var(--button-width);
                 }
-
                 #progress1, #progress2, #progress3, #progress4 {
                     position: absolute;
                     height: var(--progressBar-height);
@@ -205,7 +191,6 @@
                     line-height: 30px;
                     color: white;
                 }
-
                 #bar1, #bar2, #bar3, #bar4 {
                     /*position: absolute;*/
                     width: 1%;
@@ -237,15 +222,6 @@
                     width: var(--button-width);
                 }
             </style>
-
-
-
-            <div id="myProgress">
-                <div id="myBar"></div>
-            </div>
-            <div id="myDiv"></div>
-
-
 
             <footer class="tm-bg-dark-blue">
                 <div class="container">
@@ -279,24 +255,8 @@
         </script>
 
         <script>
-            function move(barId) {
-                var elem = document.getElementById(barId);
-                var width = 1;
-                var id = setInterval(frame, 10);
-                function frame() {
-                    if (width >= 100) {
-                        clearInterval(id);
-                    } else {
-                        width++;
-                        elem.style.width = width + '%';
-                    }
-                }
-            }
-        </script>
-
-        <script>
             $('#formSelectButton').click(function () {
-                var msg = "formFileName=" + formFilesLocation + "SimpleEgo.json";
+                var msg = "formFileName=" + formFilesLocation + $('#formSelect').val() + ".json";
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
@@ -343,10 +303,7 @@
                     dataType: "json"
                 })
 
-            })
-            $('#removebutton').click(function () {
-                $('#inputsdiv').empty();
-            })
+            });
         </script>
 
          <script>
@@ -354,82 +311,30 @@
              var params = new Array(4);
              var results = new Array(4);
              var inProgress = [false, false, false, false];
-             var db = false;
-            $('#submitbutton').click(function() {
-                if (db) {
-
-                    var a = serialize();
-                    console.log(a);
-                    $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
-                        function onAjaxSuccess(objId) {
-
-                            $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',
-                                {data: JSON.stringify(a), objId: objId});
-                            callPercentage();
-                            var msg = $('#formx').serialize();
-                            $.ajax({
-                                type: 'GET',
-                                url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run', // Add experimentId
-                                data: msg,
-                                success: function (data) {
-                                    //alert(data);
-                                    drawResult(data);
-
-                                    $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',
-                                        {result: JSON.stringify(data), objId: objId});
-                                },
-                                error: function (xhr, str) {
-                                    alert('Возникла ошибка: ' + xhr.responseCode);
-                                },
-                                dataType: "json"
-                            });
-                        }
-                    );
-                } else {
-//                    callPercentage();
-                    var msg = $('#formx').serialize();
-                    msg += "&experimentId=13742357325"; // Change ID
-                    params[0] = msg;
-                    $.ajax({
-                        type: 'GET',
-                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/run',
-                        data: msg,
-                        success: function (data) {
-                            results[0] = data;
-                            drawResult(data);
-                        },
-                        error: function (xhr, str) {
-                            alert('Возникла ошибка: ' + xhr.responseCode);
-                            alert(msg);
-                        },
-                        dataType: "json"
-                    });
-                }
-            });
              $('#runButton1').click(function () {
                  inProgress[0] = true;
                  callPercentage("experiment1", "bar1", 1);
                  runExperiment("experiment1", 1);
                  disactivateButtons(1);
-             })
+             });
              $('#runButton2').click(function () {
                  inProgress[1] = true;
                  callPercentage("experiment2", "bar2", 2);
                  runExperiment("experiment2", 2);
                  disactivateButtons(2);
-             })
+             });
              $('#runButton3').click(function () {
                  inProgress[2] = true;
                  callPercentage("experiment3", "bar3", 3);
                  runExperiment("experiment3", 3);
                  disactivateButtons(3);
-             })
+             });
              $('#runButton4').click(function () {
                  inProgress[3] = true;
                  callPercentage("experiment4", "bar4", 4);
                  runExperiment("experiment4", 4);
                  disactivateButtons(4);
-             })
+             });
              $('#showResultButton1').click(function() {
                  window.open(
                      'http://localhost:8080/ViseFrontEnd_war_exploded/CSS%20HTML%20Template/result.html?' +
@@ -459,9 +364,7 @@
                  );
              });
              $('#saveResultButton1').click(function() {
-
                  saveTextAsFile("data_for_csv=" + JSON.stringify(results[0]));
-
              });
              $('#saveResultButton2').click(function() {
                  saveTextAsFile("data_for_csv=" + JSON.stringify(results[1]));
@@ -472,41 +375,9 @@
              $('#saveResultButton4').click(function() {
                  saveTextAsFile("data_for_csv=" + JSON.stringify(results[3]));
              });
-             function disactivateButtons(number) {
-                 document.getElementById('showResultButton' + number).disabled = true;
-                 document.getElementById('saveResultButton' + number).disabled = true;
-             }
-             function activateButtons(number) {
-                 document.getElementById('showResultButton' + number).disabled = false;
-                 document.getElementById('saveResultButton' + number).disabled = false;
-             }
         </script>
 
         <script>
-            function callPercentage() {
-                var elem = document.getElementById("myBar");
-                var id = setInterval(frame, 100);
-                var reset = 0;
-                function frame() {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/percentage',
-                        success: function(data) {
-                            elem.style.width = data * 100 + '%';
-                            if (data >= 1) reset++;
-                            if (reset >= 5) {
-                                clearInterval(id);
-                                reset = 0;
-                            }
-                            //$('#results').html(data);
-                        },
-                        error:  function(xhr, str){
-                            alert('Возникла ошибка: ' + xhr.responseCode);
-                        },
-                        dataType: "json"
-                    });
-                }
-            }
             function callPercentage(experimentId, progressBarId, experimentNumber) {
                 var elem = document.getElementById(progressBarId);
                 var id = setInterval(frame, 100);
@@ -560,11 +431,18 @@
                     dataType: "json"
                 });
             }
+            function disactivateButtons(number) {
+                document.getElementById('showResultButton' + number).disabled = true;
+                document.getElementById('saveResultButton' + number).disabled = true;
+            }
+            function activateButtons(number) {
+                document.getElementById('showResultButton' + number).disabled = false;
+                document.getElementById('saveResultButton' + number).disabled = false;
+            }
         </script>
 
         <script type="text/javascript">
-            function saveTextAsFile(data_for_csv)
-            {
+            function saveTextAsFile(data_for_csv) {
                 $.ajax({
                     type: 'GET',
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/csv/saveCSV',
@@ -588,13 +466,9 @@
                     dataType: "text"
                 });
             }
-
-            function destroyClickedElement(event)
-            {
+            function destroyClickedElement(event) {
                 document.body.removeChild(event.target);
             }
-
-
         </script>
 
 
