@@ -41,9 +41,10 @@ public class HelloWorld {
                                     @QueryParam("step")Integer step,
                                     @QueryParam("multiple") Double multiple) {
         // Return some cliched textual content
-        String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
-                k, iteration, stepNumber, peopleCount,
-                majorityThreshold, start, finish, step, var));
+//        String json = new Gson().toJson(BackEnd.runSimpleEgo(capital, distrib, mu, sigma,
+//                k, iteration, stepNumber, peopleCount,
+//                majorityThreshold, start, finish, step, var));
+        String json = "";
         return json;
 //        return new Gson().toJson(BackEnd.runSimpleEgo(10, "ParetoDistribution", 0.1, 1,
 //                20, 100, 10, 101,
@@ -54,7 +55,8 @@ public class HelloWorld {
     @GET
     @Path("/percentage")
     public String getPercentage() {
-        return Double.toString(BackEnd.getPercentage());
+        return "";
+//        return Double.toString(BackEnd.getPercentage());
     }
 
 //    @GET
