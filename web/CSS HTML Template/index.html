@@ -385,27 +385,35 @@
              var results = new Array(4);
              var inProgress = [false, false, false, false];
              $('#runButton1').click(function () {
+                 var date = new Date();
+                 var experimentId = date.getTime();
                  inProgress[0] = true;
-                 callPercentage("experiment1", "bar1", 1);
-                 runExperiment("experiment1", 1);
+                 callPercentage(experimentId, "bar1", 1);
+                 runExperiment(experimentId, 1);
                  disactivateButtons(1);
              });
              $('#runButton2').click(function () {
+                 var date = new Date();
+                 var experimentId = date.getTime();
                  inProgress[1] = true;
-                 callPercentage("experiment2", "bar2", 2);
-                 runExperiment("experiment2", 2);
+                 callPercentage(experimentId, "bar2", 2);
+                 runExperiment(experimentId, 2);
                  disactivateButtons(2);
              });
              $('#runButton3').click(function () {
+                 var date = new Date();
+                 var experimentId = date.getTime();
                  inProgress[2] = true;
-                 callPercentage("experiment3", "bar3", 3);
-                 runExperiment("experiment3", 3);
+                 callPercentage(experimentId, "bar3", 3);
+                 runExperiment(experimentId, 3);
                  disactivateButtons(3);
              });
              $('#runButton4').click(function () {
+                 var date = new Date();
+                 var experimentId = date.getTime();
                  inProgress[3] = true;
-                 callPercentage("experiment4", "bar4", 4);
-                 runExperiment("experiment4", 4);
+                 callPercentage(experimentId, "bar4", 4);
+                 runExperiment(experimentId, 4);
                  disactivateButtons(4);
              });
              $('#showResultButton1').click(function() {

@@ -67,8 +67,21 @@
             line: {shape: 'spline'},
             type: 'scatter'
         };
+        var layout = {
+            title: 'Result',
+            xaxis: {
+                title: variation
+//                showgrid: false,
+//                zeroline: false
+            }
+//            yaxis: {
+//                title: 'Percent',
+////                showline: false
+//            }
+        };
+
         var plotdata = [trace1, trace2];
-        Plotly.newPlot('myDiv', plotdata);
+        Plotly.newPlot('myDiv', plotdata, layout);
         //$('#results').html(data);
     }
 </script>
