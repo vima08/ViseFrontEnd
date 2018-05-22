@@ -22,8 +22,8 @@
 
         <!--<script type="text/javascript" src="js/jquery.dataTables.js"></script>-->
 
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+        <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
         <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
         <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     </head>
@@ -70,7 +70,7 @@
                                 <form action="javascript:void(null);" method="get" id="formx" class="tm-search-form tm-section-pad-2" onsubmit="call()">
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-2">
-                                            <select name="formSelect" class="form-control" id="formSelect">
+                                            <select name="formSelect" class="form-control" id="formSelect" title="Form name">
                                                 <option value="SimpleEgo">SimpleEgo</option>
                                                 <option value="Combined">Combined</option>
                                             </select>
@@ -166,7 +166,6 @@
 
             </div>
             <form id="hiddenForm"></form>
-
             <style>
                 :root {
                     --step: 5%;
@@ -250,28 +249,9 @@
         <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
         <script src="js/plotly-latest.min.js"></script>
         <!--<script src="js/button.js"></script>-->
-        <script src="js/jquery-3.3.1.js"></script>
-        <script src="js/jquery.serializeObject.js"></script>
+        <!--<script src="js/jquery-3.3.1.js"></script>-->
+        <!--<script src="js/jquery.serializeObject.js"></script>-->
 
-        <!--<script>-->
-            <!--$('#testButton').click(function () {-->
-                <!--var msg = $('#formx').serialize();-->
-                <!--$.ajax({-->
-                    <!--type: 'GET',-->
-                    <!--url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/experiment/test',-->
-                    <!--data: msg,-->
-                    <!--success: function (data) {-->
-                        <!--alert(data);-->
-
-                    <!--},-->
-                    <!--error: function (xhr, str) {-->
-                        <!--alert('Возникла ошибка: ' + xhr.responseCode);-->
-                        <!--alert(msg);-->
-                    <!--}//,-->
-                    <!--//dataType: "json"-->
-                <!--});-->
-            <!--});-->
-        <!--</script>-->
 
         <script>
             var formFilesLocation = "D:\\Repository\\java vise\\ViseFrontEnd\\forms\\";
@@ -289,8 +269,12 @@
                     url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/formbuilder/form',
                     data: msg,
                     success: function(data) {
-                        $('#inputsdiv').empty();
-                        var i, j;
+                        var inputsdiv =  $('#inputsdiv');
+                        var changeinputsdiv = $('#changeinputsdiv');
+                        inputsdiv.empty();
+                        changeinputsdiv.empty();
+                        var i;
+                        var j;
                         var appendString;
 //                        alert(data);
                         for (i = 0; i < data.length; i++) {
@@ -301,9 +285,9 @@
                                     "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">" + data[i].label + "</i>\n";
                                 appendString += "<i class=\"fa fa-var-marker fa-2x tm-form-element-icon-my\"></i>\n" +
                                     "<select name=\"" + data[i].name + "\" class=\"form-control\" id=\"" + data[i].id +
-                                    "\" attr_id=\"" + data[i].attr_id + "\" value=\"0.5\" >\n";
+                                    "\" attr_id=\"" + data[i].attr_id + "\" value=\"0.5\">\n";
                                 var options = data[i].options.split(",");
-                                for (var j = 0; j < options.length; j++) {
+                                for (j = 0; j < options.length; j++) {
                                     appendString += "<option value=\"" + options[j] + "\">" + options[j] + "</option>\n";
                                 }
                                 appendString += "</select>\n" + "</div>";
@@ -317,10 +301,11 @@
                                     "<input name=\"" + data[i].name +
                                     "\" type=\"" + data[i].type +
                                     "\" class=\"form-control\" id=\"" + data[i].id + "\"" +
-                                    "placeholder=\"" + data[i].placeholder + "\" value=\"" + data[i].value + "\">\n" +
+                                    "placeholder=\"" + data[i].placeholder + "\" value=\"" + data[i].value + "\"" +
+                                    "attr_id=\"" + data[i].attr_id + "\">\n" +
                                     "</div>";
                             }
-                            $('#inputsdiv').append(appendString);
+                            inputsdiv.append(appendString);
 
                             if (data[i].inputType == "arrays") {
 //                                appendString = "<div class=\"form-group tm-form-element tm-form-element-2\">";
@@ -340,13 +325,13 @@
                                 }
                                 appendString += "</div>";
                                 appendStringAddGroup = appendString;
-                                $('#changeinputsdiv').append(appendString);
+                                changeinputsdiv.append(appendString);
                                 appendString = "<div class=\"form-group tm-form-element tm-form-element-100\">\n" +
                                     "<i class=\"fa mt-1 tm-font-semibold tm-color-primary\">Add group</i>\n" +
                                     "<button id=\"addGroupButton\" class=\"btn btn-primary tm-btn-search\" " +
                                     "onclick='addGroup()'>Add Group</button>\n" +
                                     "</div>";
-                                $('#inputsdiv').append(appendString);
+                                inputsdiv.append(appendString);
 //                                appendString += "<button id=\"addGroupButton\" class=\"btn btn-primary tm-btn-search\">Add Group</button>\n";
 //                                appendString += "</div>";
 
@@ -362,12 +347,16 @@
 
             });
             $('#testButton').click(function () {
-                alert("sdvd");
-                alert(appendStringAddGroup);
-                $('#changeinputsdiv').append(appendStringAddGroup);
+//                alert("sdvd");
+//                alert(appendStringAddGroup);
+//                $('#changeinputsdiv').append(appendStringAddGroup);
+//                alert(params[0]);
+//                alert(results[0]);
+//                alert(formForDataBase[0]);
+                console.log(formForDataBase[0]);
+                console.log(results[0]);
             });
             function addGroup() {
-//                alert("sdfavge");
                 $('#changeinputsdiv').append(appendStringAddGroup);
             }
         </script>
@@ -380,9 +369,9 @@
                      '_blank'
                  );
              }
-             var csvdata;
              var params = new Array(4);
              var results = new Array(4);
+             var formForDataBase = new Array(4);
              var inProgress = [false, false, false, false];
              $('#runButton1').click(function () {
                  var date = new Date();
@@ -486,6 +475,7 @@
             }
             function runExperiment(experimentId, experimentNumber) {
                 var msg = $('#formx').serialize();
+                formForDataBase[experimentNumber - 1] = serializeFormForDataBase();
                 msg += "&experimentId=" + experimentId;
 //                msg += "&formSelect=" + $('#formSelect').val();
                 params[experimentNumber - 1] = msg;
@@ -498,7 +488,7 @@
 //                        drawResult(data);
                         inProgress[experimentNumber - 1] = false;
                         activateButtons(experimentNumber);
-
+                        saveToDataBase(experimentId % 1000000000, experimentNumber, "SomeExperimentName");
                     },
                     error: function (xhr, str) {
                         inProgress[experimentNumber - 1] = false;
@@ -550,12 +540,27 @@
 
 
         <script>
-            function serialize() {
+            function serializeFormForDataBase() {
                 var data = {};
                 $("[attr_id]").each(function () {
                     data[$(this).attr("attr_id")] = $(this).val()
                 });
                 return data;
+            }
+            function saveToDataBase(experimentId, experimentNumber, experimentName) {
+                var form = formForDataBase[experimentNumber - 1];
+                var resultToSave = results[experimentNumber - 1];
+                $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
+                    {idExp: experimentId, nameExp: experimentName},
+                    function onAjaxSuccess(data) {
+                        console.log(data);
+                        console.log("form.var: " + form[9]);
+                        $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveForm',
+                            {data: JSON.stringify(form), idExp: experimentId}); ///!!!!! stringify
+                        $.post('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/saveResult',
+                            {result: JSON.stringify(resultToSave), idExp: experimentId, var: form[9]});
+
+                    })
             }
         </script>
 

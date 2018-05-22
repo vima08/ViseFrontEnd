@@ -5,19 +5,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "listvalue", schema = "vise")
 public class ListValueEntity {
-    private Long listValueId;
+    private int listValueId;
     private Integer number;
     private String value;
     private AttributeEntity attributesByAttrId;
 
-    public void setListValueId(Long listValueId) {
+    public void setListValueId(int listValueId) {
         this.listValueId = listValueId;
     }
 
     @Id
     @Column(name = "list_value_id", nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Long getListValueId() {
+    public int getListValueId() {
         return listValueId;
     }
 
@@ -57,10 +57,10 @@ public class ListValueEntity {
 
     @Override
     public int hashCode() {
-        Long result = listValueId;
+        int result = listValueId;
         result = 31 * result + (number != null ? number.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);
-        return result.intValue();
+        return result;
     }
 
     @ManyToOne

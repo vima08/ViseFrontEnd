@@ -115,16 +115,12 @@
     "value":"10",
     "attr_id":"13"},
   {
-    "name":"multiple",
-    "id":"multiple",
-    "placeholder": "Multiple...",
-    "label":"Multiple",
-    "title":"Multiple",
+    "name":"experimentName",
+    "id":"experimentName",
+    "placeholder": "Experiment name...",
+    "label":"Experiment Name",
+    "title":"Experiment Name",
     "type":"text",
-    "value":"1",
-    "attr_id":"14"},
-  {
-    "name":"someName",
-    "id":"someId",
-    "label":"Some Label"}
+    "value":"Experiment",
+    "attr_id":"21"}
 ]

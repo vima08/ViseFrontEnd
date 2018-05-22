@@ -8,19 +8,19 @@ import java.util.Set;
 @Entity
 @Table(name = "object", schema = "vise")
 public class ObjectEntity implements Serializable{
-    private Long objectId;
+    private int objectId;
     private String name;
     private String description;
     private ObjectEntity objectsByParentId;
 
     @Id
     @Column(name = "object_id", nullable = false)
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Long getObjectId() {
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public int getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(Long objectId) {
+    public void setObjectId(int objectId) {
         this.objectId = objectId;
     }
 
@@ -60,10 +60,10 @@ public class ObjectEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        Long result = objectId;
+        int result = objectId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result.intValue();
+        return result;
     }
 
     @ManyToOne
@@ -87,5 +87,12 @@ public class ObjectEntity implements Serializable{
         this.paramsOfObject = paramsOfObject;
     }
 
-
+    @Override
+    public String toString() {
+        return "ObjectEntity{" +
+                "objectId=" + objectId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

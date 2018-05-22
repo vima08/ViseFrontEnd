@@ -98,6 +98,15 @@
     "value":"10",
     "attr_id":"13"},
   {
+    "name":"experimentName",
+    "id":"experimentName",
+    "placeholder": "Experiment name...",
+    "label":"Experiment Name",
+    "title":"Experiment Name",
+    "type":"text",
+    "value":"Experiment",
+    "attr_id":"21"},
+  {
     "inputType":"arrays",
     "inputs": [
       {

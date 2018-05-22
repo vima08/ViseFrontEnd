@@ -1,12 +1,12 @@
 package ru.vise.dao.interfaces;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import ru.vise.entities.AttributeEntity;
 
-public interface AttributeDAO extends JpaRepository<AttributeEntity, Long>{
-
-    void deleteByAttrId(Long attrId);
-
-    AttributeEntity findByAttrId(Long attrId);
+public interface AttributeDAO {
+    void deleteAttribute(int attrId);
+    void updateAttribute(AttributeEntity attributeEntity);
+    void addAttribute(AttributeEntity attributeEntity);
+    AttributeEntity getAttributeEntity(String attrName, String description);
+    AttributeEntity getAttributeEntity(int id);
 }
