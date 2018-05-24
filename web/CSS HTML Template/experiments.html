@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Experiments</title>
+</head>
+<body>
+<div id="myDiv">
+    <button id="drawButton">Update</button>
+</div>
+<table id="paramsTable" border="1" width="100%" cellpadding="5">
+    <tr>
+        <th>Experiment ID</th>
+        <th>Experiment name</th>
+        <th>Experiment description</th>
+    </tr>
+</table>
+
+<script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+<script src="js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->
+<script src="js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
+<script src="js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
+<script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+<script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+<script src="js/plotly-latest.min.js"></script>
+
+<script>
+    $('#drawButton').click(function () {
+        drawResultsTable();
+    });
+    function drawResultsTable() {
+        var msg = "";
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/getAllExp',
+            data: msg,
+            success: function (data) {
+                $('#paramsTable').empty();
+                $('#paramsTable').append("<tr>\n" +
+                    "        <th>Experiment ID</th>\n" +
+                    "        <th>Experiment name</th>\n" +
+                    "        <th>Experiment description</th>\n" +
+                    "    </tr>");
+                data.forEach(function (item, i, arr) {
+                    if (i > 0) {
+                        $('#paramsTable').append("<tr>\n" +
+                            "<td>" + data[i].objectId + "</td>\n" +
+                            "<td>" + data[i].name + "</td>\n" +
+                            "<td>" + data[i].description + "</td>\n" +
+                            "</tr>");
+                    }
+                });
+            },
+            error: function (xhr, str) {
+                alert('Возникла ошибка (getAllExp): ' + xhr.responseCode);
+            },
+            dataType: "json"
+        });
+
+
+    }
+//        var SearchString = window.location.search.substring(1);
+
+
+//        var SearchString = sessionStorage.getItem("resultToDraw");
+//        var arr = SearchString.split('&');
+//        var test = arr[0].split('=')[1];
+//        test = test.replace(/%22/g,'\"');
+//        var result = JSON.parse(test);
+//        var map = new Map();
+//        var elem = ["", ""];
+
+//        arr.forEach(function (item, i, arr) {
+//            if (i > 0) {
+//                elem = item.split('=');
+//                map.set(elem[0], elem[1]);
+//                $('#paramsTable').append("<tr>\n" +
+//                    "<td>" + elem[0] + "</td>\n" +
+//                    "<td>" + elem[1] + "</td>\n" +
+//                    "</tr>");
+//            }
+//        });
+
+
+
+
+
+
+</script>
+</body>
+</html>

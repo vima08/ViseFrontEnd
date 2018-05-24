@@ -551,7 +551,7 @@
                 var form = formForDataBase[experimentNumber - 1];
                 var resultToSave = results[experimentNumber - 1];
                 $.get('http://localhost:8080/ViseFrontEnd_war_exploded/resource/database/generate',
-                    {idExp: experimentId, nameExp: experimentName},
+                    {idExp: experimentId, nameExp: form[21]}, // form[21] - experimentName
                     function onAjaxSuccess(data) {
                         console.log(data);
                         console.log("form.var: " + form[9]);

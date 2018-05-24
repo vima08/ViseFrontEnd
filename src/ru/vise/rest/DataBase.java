@@ -3,6 +3,7 @@ package ru.vise.rest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import ru.vise.dao.FactoryDAO;
 import ru.vise.entities.AttributeEntity;
 import ru.vise.entities.ObjectEntity;
@@ -14,6 +15,7 @@ import javax.ws.rs.*;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Path("/database")
@@ -24,8 +26,10 @@ public class DataBase {
     public String getGenerateObject(@QueryParam("idExp") String idExp, @QueryParam("nameExp") String nameExp){
         ObjectEntity objectEntity = new ObjectEntity();
         objectEntity.setName(nameExp);
+        ObjectEntity mainExp = FactoryDAO.getInstance().getObjectDAO().getObjectEntity(1);
+        objectEntity.setObjectsByParentId(mainExp);
         objectEntity.setObjectId(Integer.parseInt(idExp));
-        objectEntity.setDescription(DateFormat.getDateInstance().format(new Date()));
+        objectEntity.setDescription((new SimpleDateFormat("YYYY/MM/dd HH:mm:ss")).format(new Date()));
 
         int i = FactoryDAO.getInstance().getObjectDAO().saveObject(objectEntity);
         //FactoryDAO.getInstance().getObjectDAO().setObjectId(Integer.parseInt(idExp), i);
@@ -104,7 +108,7 @@ public class DataBase {
             ObjectEntity resultObject = new ObjectEntity();
             resultObject.setObjectId((int) ((new Date()).getTime() % 1000000000));
             resultObject.setObjectsByParentId(session.find(ObjectEntity.class, 2));
-            resultObject.setName("result_" + DateFormat.getDateInstance().format(new Date()));
+            resultObject.setName("Result_" + DateFormat.getDateInstance().format(new Date()));
             resultObject.setDescription(DateFormat.getTimeInstance().format(new Date()));
             Integer idResultObject = (Integer) session.save(resultObject);
 
@@ -128,13 +132,20 @@ public class DataBase {
             for (int i = 0; i < mapOfResult.get(mapOfResult.keySet().iterator().next()).length; i++) {
                 Iterator<String> iteratorOfSetKeyResult = setKeyOfResult.iterator();
                 ObjectEntity pointObject = new ObjectEntity();
-                pointObject.setObjectId((int) ((new Date()).getTime() % 1000000000));
+
+//                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                pointObject.setObjectId((int) ((new Date()).getTime() % 2000000000)); // ID POIN!!!!
+//                !!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+//                pointObject.setObjectId((int) ((new Date()).getTime() % 2000000000));
 //                session.save(pointObject);
 
                 ParamEntity paramVar = new ParamEntity();
                 paramVar.setAttributesByAttrId(FactoryDAO.getInstance().getAttributeDAO().getAttributeEntity(18));
                 paramVar.setValue(var);
-                pointObject.setName("point_" + DateFormat.getTimeInstance().format(new Date()));
+                pointObject.setName("Point");
+                pointObject.setDescription(DateFormat.getTimeInstance().format(new Date()));
                 paramVar.setObjectsByObjectId(pointObject);
                 session.save(paramVar);
 
@@ -164,26 +175,31 @@ public class DataBase {
         }
     }
 
-//    @GET
-//    @Produces("text/plain")
-//    @Path("/getResult")
-//    public String getResult(@QueryParam("idExp") String idExp){
-//        Session session = null;
-//        try {
-//            session = HibernateSessionFactory.getSessionFactory().openSession();
-//            session.beginTransaction();
-//
-//            session.getTransaction().commit();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
-//        } finally {
-//            if (session != null && session.isOpen()) {
-//                session.close();
-//            }
-//        }
-//        return null;
-//    }
-//
+    @GET
+    @Produces("text/plain")
+    @Path("/getAllExp")
+    public String getAllExp(){
+        Session session = null;
+        ArrayList<ObjectEntity> list = null;
+        try {
+            session = HibernateSessionFactory.getSessionFactory().openSession();
+            session.beginTransaction();
+//            session.find()
+            ObjectEntity mainExp = FactoryDAO.getInstance().getObjectDAO().getObjectEntity(1);
+            Query query = session.createQuery("from ObjectEntity where objectsByParentId = :paramParent order by description");
+            query.setParameter("paramParent", mainExp);
+            list = (ArrayList<ObjectEntity>) query.list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return new Gson().toJson(list);
+    }
+
 //    @GET
 //    @Produces("text/plain")
 //    @Path("/getPoint")

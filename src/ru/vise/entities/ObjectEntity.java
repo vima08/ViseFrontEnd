@@ -1,5 +1,8 @@
 package ru.vise.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -76,10 +79,11 @@ public class ObjectEntity implements Serializable{
         this.objectsByParentId = objectsByParentId;
     }
 
-    private Set<ParamEntity> paramsOfObject = new HashSet<ParamEntity>();
+    private transient Set<ParamEntity> paramsOfObject = new HashSet<ParamEntity>();
 
     @OneToMany(mappedBy = "objectsByObjectId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    public Set<ParamEntity> getParamsOfObject() {
+    @Fetch(FetchMode.JOIN)
+    public Set<ParamEntity  > getParamsOfObject() {
         return paramsOfObject;
     }
 
